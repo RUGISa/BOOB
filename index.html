@@ -53,6 +53,8 @@
     .chance-info{color:var(--sub);font-size:10px;line-height:1.6}.chance-info strong{display:block;color:var(--text);font-size:18px}.upgrade-controls{width:100%}.chance-row{display:flex;justify-content:center;gap:8px;margin-bottom:13px}.chance-point{width:52px;height:8px;border-radius:999px;background:#d7d4cd}.chance-point.current{background:var(--accent);opacity:.55;animation:chancePulse 1.2s ease-in-out infinite}.chance-point.success{background:var(--green)}.chance-point.failure{background:var(--yellow)}.chance-point.saved{background:var(--blue)}.chance-point.explode{background:var(--red)}
     .upgrade-buttons{display:grid;grid-template-columns:.9fr 1.45fr;gap:9px}.claim-button,.upgrade-main-button{min-height:58px;padding:13px 17px 17px;border:0;color:#fff;font-size:13px;font-weight:900;cursor:pointer}.claim-button{background:#323230;box-shadow:0 6px 0 #1d1d1b}.upgrade-main-button{background:var(--accent);box-shadow:0 6px 0 var(--accent-dark)}.claim-button:active:not(:disabled),.upgrade-main-button:active:not(:disabled){transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.28)}.claim-button:disabled,.upgrade-main-button:disabled{background:#cbc8c1;box-shadow:0 6px 0 #aba79e;cursor:default}
     .tutorial-overlay{position:fixed;z-index:500;inset:0;pointer-events:none}.tutorial-focus{position:fixed;z-index:2;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(12,12,11,.72),0 0 24px rgba(255,255,255,.22);pointer-events:none;transition:.26s ease}.tutorial-card{position:fixed;z-index:3;width:min(360px,calc(100vw - 28px));padding:21px;border:1px solid #1f1f1e;background:#faf9f5;box-shadow:0 20px 55px rgba(0,0,0,.24);pointer-events:auto}.tutorial-step{color:var(--faint);font-size:9px;font-weight:850;letter-spacing:.14em}.tutorial-title{margin-top:7px;font-size:20px;font-weight:900}.tutorial-text{margin-top:9px;color:var(--sub);font-size:12px;line-height:1.7}.tutorial-actions{display:flex;gap:8px;margin-top:18px}.tutorial-skip,.tutorial-next{min-height:40px;padding:0 14px;border:1px solid var(--line-dark);color:var(--sub);background:transparent;font-size:10px;font-weight:850;cursor:pointer}.tutorial-next{flex:1;border:0;color:#fff;background:#292927}
+    .rulebook-button{min-width:58px;padding:0 14px;border:1px solid var(--line-dark);color:var(--sub);background:transparent;font-size:10px;font-weight:850;cursor:pointer}.rulebook-button:hover{color:#fff;background:#292927}.rulebook-overlay{position:fixed;z-index:420;inset:0;display:grid;place-items:center;padding:26px;background:rgba(28,27,25,.58);backdrop-filter:blur(4px)}.rulebook-stack{position:relative;width:min(760px,100%)}.rule-paper-shadow{position:absolute;inset:auto 36px -16px 36px;height:56px;background:rgba(0,0,0,.16);filter:blur(24px)}.rule-sheet-back{position:absolute;inset:0;border:1px solid #cbc7bd;background:#f2f0ea;box-shadow:0 24px 50px rgba(0,0,0,.12)}.rule-sheet-back.back-a{transform:rotate(-4deg) translate(-18px,12px)}.rule-sheet-back.back-b{transform:rotate(3.5deg) translate(18px,4px)}.rule-sheet{position:relative;padding:30px 32px 24px;border:1px solid #bdb8ad;background:linear-gradient(180deg,#fbfaf6,#f1eee6);box-shadow:0 34px 80px rgba(0,0,0,.18)}.rule-sheet::before{content:"";position:absolute;inset:14px;border:1px solid rgba(120,108,84,.14);pointer-events:none}.rule-sheet::after{content:"";position:absolute;top:18px;right:22px;width:84px;height:84px;border:2px solid rgba(157,74,64,.28);border-radius:50%;pointer-events:none}.rule-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:16px;border-bottom:1px solid #d8d3c8}.rule-kicker{color:#9d6d4e;font-size:10px;font-weight:900;letter-spacing:.22em}.rule-title{margin-top:7px;font-size:32px;font-weight:950;letter-spacing:-.06em}.rule-sub{margin-top:6px;color:var(--sub);font-size:12px;line-height:1.7}.rule-stamp{padding:7px 10px;border:1px solid rgba(157,74,64,.44);color:#9d4a40;font-size:10px;font-weight:900;letter-spacing:.18em;transform:rotate(7deg)}.rule-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:16px;margin-top:18px}.rule-block{padding:15px 16px;border:1px solid #d7d2c6;background:rgba(255,255,255,.52)}.rule-block-title{font-size:15px;font-weight:900;letter-spacing:-.03em}.rule-list{margin-top:11px;display:grid;gap:8px}.rule-item{display:grid;grid-template-columns:118px 1fr;gap:10px;font-size:12px;line-height:1.55}.rule-item span:first-child{color:#6f6559;font-weight:850}.rule-item span:last-child{color:#373530}.rule-note{margin-top:14px;padding:12px 14px;border:1px dashed #c9c2b7;color:#5e584f;background:rgba(245,243,236,.9);font-size:11px;line-height:1.7}.rule-mini-grid{display:grid;gap:9px;margin-top:11px}.rule-mini-card{padding:11px 12px;border:1px solid #ddd7cb;background:#fbfaf7}.rule-mini-card strong{display:block;font-size:12px}.rule-mini-card p{margin-top:4px;color:#59564f;font-size:11px;line-height:1.6}.rule-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.rule-actions-note{color:var(--faint);font-size:10px;line-height:1.6}.rule-actions-buttons{display:flex;gap:8px}.rule-secondary,.rule-primary{min-height:42px;padding:0 15px;border:1px solid var(--line-dark);font-size:11px;font-weight:850;cursor:pointer}.rule-secondary{color:var(--sub);background:transparent}.rule-primary{border:0;color:#fff;background:#292927}.rule-primary:hover,.rule-secondary:hover{transform:translateY(-1px)}
+    @media (max-width: 860px){.rule-grid{grid-template-columns:1fr}.rule-sheet{padding:24px 20px 20px}.rule-title{font-size:28px}.rule-actions{flex-direction:column;align-items:stretch}.rule-actions-buttons{width:100%}.rule-secondary,.rule-primary{flex:1}.rule-item{grid-template-columns:102px 1fr}}
     @keyframes spin{to{transform:rotate(360deg)}}@keyframes resultPopup{0%{opacity:0;transform:translate(-50%,10px) scale(.94)}16%{opacity:1;transform:translate(-50%,-4px) scale(1.02)}74%{opacity:1;transform:translate(-50%,-8px) scale(1)}100%{opacity:0;transform:translate(-50%,-28px) scale(.98)}}@keyframes chancePulse{0%,100%{opacity:.35}50%{opacity:.8}}
     @media(max-width:980px){.menu-shell{grid-template-columns:1fr}.menu-intro{min-height:320px;border-right:0;border-bottom:1px solid var(--line)}.inspection-layout{grid-template-columns:220px 1fr 255px}.bottom-panel,.upgrade-bottom{grid-template-columns:1fr minmax(420px,560px)}.bottom-note{display:none}.restart-button,.upgrade-restart{position:absolute;right:18px;bottom:5px;min-height:27px;border:0}}
     @media(max-width:780px){html,body{overflow:auto}.game-screen{height:auto;min-height:100vh;display:block}.topbar{grid-template-columns:1fr 1fr}.progress-box{grid-column:1/-1;grid-row:2;min-width:0}.inspection-layout{display:flex;flex-direction:column}.scene-column,.upgrade-layout{height:500px}.side-panel.left{border-right:0;border-top:1px solid var(--line)}.side-panel.right{border-left:0;border-top:1px solid var(--line)}.bottom-panel,.upgrade-bottom{display:block}.action-grid{grid-template-columns:repeat(2,1fr)}.restart-button,.upgrade-restart{position:static;width:100%;margin-top:10px;border:1px solid var(--line-dark)}.upgrade-buttons{margin-top:13px}}
@@ -90,13 +92,13 @@
     <header class="topbar">
       <div class="brand"><div class="brand-mark">鑑</div><div><h1 class="brand-title">상자 감정소</h1><p class="brand-sub">불완전한 단서를 읽고 결정하세요.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="caseProgressText">오늘의 의뢰 1 / 6</span><span id="quotaText">목표 3,000 G</span></div><div class="progress-track"><div id="dayProgressFill" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">CURRENT</div><div id="inspectionMoneyValue" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">ACCIDENT</div><div id="accidentValue" class="stat-value">0</div></div><button id="inspectionHomeButton" class="home-button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">CURRENT</div><div id="inspectionMoneyValue" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">ACCIDENT</div><div id="accidentValue" class="stat-value">0</div></div><button id="inspectionRuleButton" class="rulebook-button" type="button">규정</button><button id="inspectionHomeButton" class="home-button">←</button></div>
     </header>
 
     <section class="inspection-layout">
       <aside id="tutorialToolsTarget" class="side-panel left">
         <section class="panel-section"><p class="section-label">INSPECTION</p><h2 class="section-title">조사 도구</h2><p class="section-description">상자 하나당 네 번만 조사할 수 있습니다. 일부 검사는 틀린 결과를 보여줄 수 있습니다.</p><div id="inspectionCount" class="inspection-count"><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span></div><div id="toolList" class="tool-list"></div></section>
-        <section class="panel-section"><p class="section-label">RULE</p><h2 class="section-title">처리 원칙</h2><p class="section-description">정확한 추리는 추가 수익을 줍니다. 위험한 상자를 폐기하면 처리 수당을 받을 수 있습니다.</p></section>
+        <section class="panel-section"><p class="section-label">RULE</p><h2 class="section-title">처리 원칙</h2><p class="section-description">정답 보너스와 행동 결과는 따로 계산됩니다. 판매는 안전도에 따라 달라지고, 위험한 생물은 폐기 수당이 큽니다.</p></section>
       </aside>
 
       <section id="inspectionScene" class="scene-column">
@@ -108,13 +110,13 @@
 
       <aside class="side-panel right">
         <section id="tutorialCluesTarget" class="panel-section"><p class="section-label">FINDINGS</p><h2 class="section-title">조사 기록</h2><div id="clueList" class="clue-list"><div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div></div></section>
-        <section id="tutorialGuessTarget" class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">행동을 선택하기 전에 예상 내용을 지정하세요.</p><div class="guess-grid"><label><span class="field-label">예상 내용물</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="treasure">귀중품</option><option value="mimic">생물</option><option value="explosive">폭발물</option><option value="cursed">저주 물품</option><option value="junk">잡동사니</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
+        <section id="tutorialGuessTarget" class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">행동을 선택하기 전에 예상 내용을 지정하세요.</p><div class="guess-grid"><label><span class="field-label">예상 내용물</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
       </aside>
     </section>
 
     <footer id="tutorialActionsTarget" class="bottom-panel">
-      <p class="bottom-note"><strong>판매</strong>는 안전하지만 수익이 낮습니다.<br><strong>강화</strong>는 가치가 크게 오르거나 사고가 납니다.</p>
-      <div class="action-grid"><button class="action-button" data-action="sell"><span class="action-title">판매</span><span class="action-info">현재 가치 정산</span></button><button class="action-button" data-action="open"><span class="action-title">개봉</span><span class="action-info">내용물 직접 확인</span></button><button class="action-button" data-action="upgrade"><span class="action-title">강화</span><span class="action-info">가치 상승 또는 사고</span></button><button class="action-button" data-action="discard"><span class="action-title">폐기</span><span class="action-info">위험물 처리</span></button></div>
+      <p class="bottom-note"><strong>정답 보너스</strong>는 내용물 +120 G, 위험도 +80 G입니다.<br><strong>개봉</strong>과 <strong>강화</strong>는 정답을 맞혀도 사고가 날 수 있습니다.</p>
+      <div class="action-grid"><button class="action-button" data-action="sell"><span class="action-title">판매</span><span class="action-info">위험도 따라 금액 변동</span></button><button class="action-button" data-action="open"><span class="action-title">개봉</span><span class="action-info">직접 확인 · 사고 가능</span></button><button class="action-button" data-action="upgrade"><span class="action-title">강화</span><span class="action-info">가치 상승 또는 사고</span></button><button class="action-button" data-action="discard"><span class="action-title">폐기</span><span class="action-info">위험할수록 수당 큼</span></button></div>
       <button id="restartInspectionButton" class="restart-button">오늘 다시 시작</button>
     </footer>
   </main>
@@ -138,17 +140,70 @@
 
   <div id="tutorialOverlay" class="tutorial-overlay hidden"><div id="tutorialFocus" class="tutorial-focus"></div><article id="tutorialCard" class="tutorial-card"><p id="tutorialStep" class="tutorial-step">TUTORIAL 1 / 4</p><h2 id="tutorialTitle" class="tutorial-title">조사부터 시작하세요</h2><p id="tutorialText" class="tutorial-text"></p><div class="tutorial-actions"><button id="tutorialSkipButton" class="tutorial-skip">건너뛰기</button><button id="tutorialNextButton" class="tutorial-next">다음</button></div></article></div>
 
+  <div id="ruleBookOverlay" class="rulebook-overlay hidden">
+    <div class="rulebook-stack">
+      <div class="rule-paper-shadow"></div>
+      <div class="rule-sheet-back back-a"></div>
+      <div class="rule-sheet-back back-b"></div>
+      <article class="rule-sheet">
+        <header class="rule-head">
+          <div>
+            <p class="rule-kicker">FIELD MANUAL</p>
+            <h2 class="rule-title">상자 감정 규정서</h2>
+            <p class="rule-sub">업무 시작 전, 이 서류로 오늘의 판단 기준을 빠르게 확인하세요.</p>
+          </div>
+          <div class="rule-stamp">확인필</div>
+        </header>
+        <div class="rule-grid">
+          <section class="rule-block">
+            <h3 class="rule-block-title">조사 도구 판별 기준</h3>
+            <div class="rule-list">
+              <div class="rule-item"><span>무게 측정</span><span>내용물의 움직임, 부피감, 특이한 무게 중심을 봅니다.</span></div>
+              <div class="rule-item"><span>표면 온도</span><span>생물 여부와 대략적인 체온성 반응을 봅니다.</span></div>
+              <div class="rule-item"><span>투과 검사</span><span>안쪽 형체를 보고 어떤 생물인지 추리합니다.</span></div>
+              <div class="rule-item"><span>표면 흔적</span><span>긁힘, 충격, 마찰 자국으로 위험도를 읽습니다.</span></div>
+              <div class="rule-item"><span>반응 시약</span><span>털, 점액, 재, 금속 등 생물 성질을 확인합니다.</span></div>
+              <div class="rule-item"><span>봉인 검사</span><span>봉인 강도와 운송 기록으로 위험도를 가늠합니다.</span></div>
+            </div>
+            <div class="rule-note">조사는 상자 하나당 <strong>4회</strong>만 가능합니다. 일부 검사는 부정확하므로 한 줄짜리 단서만 믿으면 틀릴 수 있습니다.</div>
+          </section>
+          <section class="rule-block">
+            <h3 class="rule-block-title">수익과 처리 원칙</h3>
+            <div class="rule-mini-grid">
+              <div class="rule-mini-card"><strong>정답 보너스</strong><p>내용물 추리 정답 +120 G<br>위험도 추리 정답 +80 G</p></div>
+              <div class="rule-mini-card"><strong>판매</strong><p>안전은 수익이 크고, 위험은 판매 수익이 낮습니다.</p></div>
+              <div class="rule-mini-card"><strong>폐기</strong><p>위험은 폐기 수당이 큽니다.<br>안전을 버리면 손해입니다.</p></div>
+              <div class="rule-mini-card"><strong>개봉 · 강화</strong><p>직접 확인하는 행동입니다. 추리를 맞혀도 사고 판정은 별도로 남아 있습니다.</p></div>
+            </div>
+            <div class="rule-note">빠른 돈이 필요하면 <strong>위험한 상자 폐기</strong>, 큰 한 방을 노리면 <strong>안전 추리 후 판매</strong>가 기본입니다.</div>
+          </section>
+        </div>
+        <div class="rule-actions">
+          <p class="rule-actions-note">이 서류는 우측 상단의 <strong>규정</strong> 버튼으로 언제든 다시 볼 수 있습니다.</p>
+          <div class="rule-actions-buttons">
+            <button id="ruleCloseButton" class="rule-secondary" type="button">규정만 닫기</button>
+            <button id="ruleStartButton" class="rule-primary" type="button">업무 시작</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
   <script type="module">
     import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.module.js";
 
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     const mainMenu=$('#mainMenu'), inspectionGame=$('#inspectionGame'), upgradeGame=$('#upgradeGame');
     const probabilityPanel=$('#probabilityPanel');
+    const ruleBookOverlay=$('#ruleBookOverlay');
+    let openTutorialAfterRule=true;
     function showScreen(screen){[mainMenu,inspectionGame,upgradeGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden')}
-    function returnMain(){stopTutorial();probabilityPanel.classList.remove('open');showScreen(mainMenu)}
-    $('#modeInspectionButton').onclick=()=>{showScreen(inspectionGame);resizeInspection();setTimeout(startTutorial,160)};
+    function openRuleBook(withTutorial=true){openTutorialAfterRule=withTutorial;stopTutorial();ruleBookOverlay.classList.remove('hidden')}
+    function closeRuleBook(startGuide=false){ruleBookOverlay.classList.add('hidden');if(startGuide||openTutorialAfterRule)setTimeout(startTutorial,120)}
+    function returnMain(){stopTutorial();ruleBookOverlay.classList.add('hidden');probabilityPanel.classList.remove('open');showScreen(mainMenu)}
+    $('#modeInspectionButton').onclick=()=>{showScreen(inspectionGame);resizeInspection();setTimeout(()=>openRuleBook(true),160)};
     $('#modeUpgradeButton').onclick=()=>{showScreen(upgradeGame);resizeUpgrade()};
-    $('#inspectionHomeButton').onclick=returnMain;$('#upgradeHomeButton').onclick=returnMain;
+    $('#inspectionHomeButton').onclick=returnMain;$('#upgradeHomeButton').onclick=returnMain;$('#inspectionRuleButton').onclick=()=>openRuleBook(false);$('#ruleCloseButton').onclick=()=>{ruleBookOverlay.classList.add('hidden')};$('#ruleStartButton').onclick=()=>closeRuleBook(true);
 
     const chestNames=['나무 상자','은 상자','금 상자','다이아 상자','봉인된 상자'];
     const nextNames=['은 상자','금 상자','다이아 상자','봉인된 상자',''];
@@ -177,41 +232,108 @@
     // Inspection
     const ins=makeScene($('#inspectionCanvas'));const insRoot=new THREE.Group(),insModel=new THREE.Group();insRoot.add(insModel);insRoot.position.y=.02;insRoot.rotation.y=-.16;ins.scene.add(insRoot);
     const TOTAL=6,QUOTA=3000,MAX=4;let caseIndex=0,coins=0,accidents=0,current=null,used=0,results=[],resolved=false,insMode='idle',insTime=0;
-    const contents={treasure:{label:'귀중품',range:[430,950]},mimic:{label:'생물',range:[120,430]},explosive:{label:'폭발물',range:[260,620]},cursed:{label:'저주 물품',range:[500,1050]},junk:{label:'잡동사니',range:[30,180]}};
+    const contents={
+      treasure:{label:'귀중품',saleReward:700,defaultName:'미분류 귀중품',defaultDescription:'가치를 확인할 수 있는 물품입니다.'},
+      mimic:{label:'생물',saleReward:450,defaultName:'정체불명 생물',defaultDescription:'상자 안에서 움직이고 있습니다.'},
+      explosive:{label:'폭발물',saleReward:550,defaultName:'미분류 폭발물',defaultDescription:'취급에 주의해야 합니다.'},
+      cursed:{label:'저주 물품',saleReward:650,defaultName:'미분류 물품',defaultDescription:'일반적인 물품은 아닙니다.'},
+      junk:{label:'잡동사니',saleReward:180,defaultName:'잡동사니',defaultDescription:'쓸 만한 물건이 조금 섞여 있습니다.'}
+    };
     const riskLabel={safe:'안전',warning:'주의',danger:'위험'};
+    const discardRewards={danger:600,warning:250,safe:-150};
+    const creatureItems=[
+      {name:'슈뢰딩거의 고양이(적응)',description:'후루베 유라유라..',weight:['측정값이 짧은 간격으로 크게 달라집니다.','한쪽에 있다가 반대편으로 무게가 옮겨갑니다.'],scan:['네 발로 보이는 형체가 순간적으로 둘로 겹칩니다.','형태가 잡히지만 다음 검사 순간 위치가 달라집니다.'],reagent:['반응이 나타난 뒤 곧 다른 반응으로 바뀝니다.','생체 반응이 비정상적으로 빠르게 적응합니다.']},
+      {name:'코가 긴 길고양이',description:'다라이가 살벌하기 짝이 없습니다',weight:['가벼운 몸체 앞쪽으로 무게가 길게 쏠립니다.','작은 동물치고 앞부분의 무게 중심이 이상합니다.'],scan:['네 발 달린 작은 형체와 유난히 긴 돌출부가 보입니다.','웅크린 동물 앞쪽에 가느다란 형체가 이어집니다.'],reagent:['고양잇과 생체 반응과 외부 오염이 함께 잡힙니다.','털과 금속성 먼지가 동시에 검출됩니다.']},
+      {name:'담배피는 고양이',description:'호흡기 질환을 유발합니다',weight:['작은 동물과 가벼운 원통형 물체가 함께 움직입니다.','내용물이 가볍지만 작은 단단한 물체가 따로 잡힙니다.'],scan:['네 발 달린 형체 주변에 가느다란 연기가 남습니다.','작은 동물의 입 부근에 짧은 막대가 보입니다.'],reagent:['털, 재, 니코틴 계열 반응이 섞여 나옵니다.','생체 반응보다 연소 잔여물 반응이 먼저 나타납니다.']},
+      {name:'드래곤',description:'멋있습니다',weight:['상자 크기에 비해 무게가 지나치게 큽니다.','등 쪽과 꼬리 쪽에 단단한 무게가 몰려 있습니다.'],scan:['접힌 날개와 긴 꼬리처럼 보이는 형체가 있습니다.','파충류형 골격 주변에 넓은 막 구조가 보입니다.'],reagent:['고온성 생체 반응과 미량의 재가 검출됩니다.','파충류 계열 반응이 강하고 시약이 미지근해집니다.']},
+      {name:'짱룡',description:'테무에서 나왔습니다',weight:['큰 형체처럼 흔들리지만 실제 무게는 예상보다 가볍습니다.','부피에 비해 속이 빈 듯한 측정값입니다.'],scan:['날개 비슷한 구조가 있으나 좌우 모양이 다릅니다.','파충류형 실루엣이지만 일부 구조가 지나치게 단순합니다.'],reagent:['파충류 반응과 합성 섬유 반응이 함께 나옵니다.','생체 반응은 있으나 외피에서 인공 소재가 검출됩니다.']},
+      {name:'북극곰',description:'북극이 녹아내릴 때까지',weight:['크고 무거운 생물이 몸을 둥글게 말고 있습니다.','상자 전체 바닥에 넓게 무게가 퍼져 있습니다.'],scan:['두꺼운 털을 가진 큰 네발짐승의 형체입니다.','큰 몸체가 웅크려 있어 세부 형태는 흐립니다.'],reagent:['포유류 반응과 차가운 염분 흔적이 함께 검출됩니다.','두꺼운 털과 해수 계열 잔류물이 잡힙니다.']},
+      {name:'마즈',description:'말레이고오옴',weight:['중간 크기 동물이 계속 몸을 뒤척입니다.','네 발 동물의 무게지만 앞발 쪽이 조금 더 무겁습니다.'],scan:['곰처럼 보이지만 크기가 애매한 형체입니다.','둥근 귀와 짧은 주둥이 비슷한 윤곽이 보입니다.'],reagent:['포유류 반응과 열대성 식물 흔적이 섞여 있습니다.','털에서 습한 흙과 과일 성분이 검출됩니다.']},
+      {name:'보노보',description:'거꾸로 해도 보노보',weight:['사람과 비슷한 무게 중심이 낮게 웅크려 있습니다.','양팔을 움직일 때마다 좌우 무게 차가 커집니다.'],scan:['긴 팔을 가진 영장류형 실루엣입니다.','사람처럼 앉아 있지만 골격 비율이 다릅니다.'],reagent:['영장류 생체 반응이 검출됩니다.','털과 과일 찌꺼기 반응이 함께 나타납니다.']},
+      {name:'성인 남성',description:'왜 들어가 계십니까',weight:['성인 한 명 정도의 무게가 한쪽에 웅크려 있습니다.','사람과 비슷한 무게 분포가 측정됩니다.'],scan:['두 팔과 두 다리를 가진 큰 형체가 웅크려 있습니다.','내용물이 검사 장비를 향해 손을 흔든 듯합니다.'],reagent:['사람의 땀과 섬유 성분이 검출됩니다.','일반적인 인간 생체 반응입니다.']},
+      {name:'개발자',description:'나 진짜 팔 거야..?',weight:['성인 한 명과 여러 개의 가벼운 전자기기가 잡힙니다.','사람 무게 옆에 납작한 물체가 겹쳐 있습니다.'],scan:['웅크린 사람 앞에 얇은 사각형 물체가 보입니다.','사람 형태가 계속 손가락을 움직이고 있습니다.'],reagent:['카페인, 먼지, 전자기기 열화 흔적이 검출됩니다.','인간 생체 반응과 진한 커피 성분이 함께 나옵니다.']},
+      {name:'아트팀',description:'살려주세요',weight:['한 사람과 여러 개의 얇은 판이 함께 들어 있습니다.','사람 무게 주변으로 가벼운 도구가 흩어져 있습니다.'],scan:['사람 형체가 납작한 판을 끌어안고 있습니다.','여러 개의 펜 모양 물체와 사람 한 명이 보입니다.'],reagent:['잉크, 물감, 카페인 성분이 섞여 검출됩니다.','인간 생체 반응과 안료 반응이 함께 나옵니다.']},
+      {name:'자라나는 금덩이',description:'쑥쑥 잘 자랍니다',weight:['측정을 반복할수록 아주 조금씩 무거워집니다.','한곳에 고밀도 무게가 모여 있지만 미세하게 커집니다.'],scan:['덩어리 표면에서 작은 가지 같은 구조가 자랍니다.','생물처럼 변하지만 골격이나 장기는 보이지 않습니다.'],reagent:['금속 반응과 약한 생체 반응이 동시에 나타납니다.','시약 주변의 금속 성분이 천천히 줄어듭니다.']},
+      {name:'슬라임',description:'끄..ㄴ..ㅈ..ㅓ..ㄱ',weight:['무게 중심이 바닥을 따라 천천히 흘러갑니다.','들어 올리면 내용물이 한쪽으로 길게 늘어집니다.'],scan:['고정된 골격 없이 형태가 계속 퍼집니다.','둥근 덩어리가 상자 모서리 모양대로 변합니다.'],reagent:['점액질 생체 반응이 강하게 나타납니다.','시약이 묽어지고 끈적한 막이 생깁니다.']},
+      {name:'세상에서 가장 귀여운 고양이',description:'귀엽습니다',weight:['작고 가벼운 네발동물이 얌전히 앉아 있습니다.','작은 몸체가 일정한 위치에서 거의 움직이지 않습니다.'],scan:['작은 고양잇과 동물이 동그랗게 웅크려 있습니다.','귀가 두 개 보이고 꼬리가 몸을 감싸고 있습니다.'],reagent:['건강한 고양잇과 생체 반응입니다.','털과 약한 간식 냄새 성분이 검출됩니다.']},
+      {name:'슈뢰딩거의 고양이(생존)',description:'하지만 살았죠?',weight:['작은 동물 한 마리의 무게가 안정적으로 측정됩니다.','미세한 움직임은 있지만 무게 변화가 거의 없습니다.'],scan:['상자 안에서 고양이 형태 하나가 분명하게 보입니다.','네 발 달린 작은 생물이 규칙적으로 숨을 쉽니다.'],reagent:['정상적인 고양잇과 생체 반응이 유지됩니다.','특이 반응 없이 건강한 생체 신호가 잡힙니다.']}
+    ];
     const tools=[
-      {id:'weight',icon:'㎏',name:'무게 측정',info:'질량과 무게 중심',acc:1,label:'정확'},
-      {id:'temperature',icon:'℃',name:'표면 온도',info:'열 분포와 변화',acc:.9,label:'90%'},
-      {id:'scan',icon:'▧',name:'투과 검사',info:'내부 실루엣',acc:.74,label:'74%'},
-      {id:'surface',icon:'⌕',name:'표면 흔적',info:'오염과 손상',acc:.94,label:'94%'},
-      {id:'reagent',icon:'●',name:'반응 시약',info:'마력·화약 반응',acc:.8,label:'80%'},
-      {id:'seal',icon:'封',name:'봉인 검사',info:'재봉인 흔적',acc:.87,label:'87%'}
+      {id:'weight',icon:'㎏',name:'무게 측정',info:'내용물의 특징',acc:.92,label:'92%'},
+      {id:'temperature',icon:'℃',name:'표면 온도',info:'카테고리 추정',acc:.9,label:'90%'},
+      {id:'scan',icon:'▧',name:'투과 검사',info:'내용물 형태 힌트',acc:.76,label:'76%'},
+      {id:'surface',icon:'⌕',name:'표면 흔적',info:'위험도 추정',acc:.88,label:'88%'},
+      {id:'reagent',icon:'●',name:'반응 시약',info:'내용물 성질 힌트',acc:.78,label:'78%'},
+      {id:'seal',icon:'封',name:'봉인 검사',info:'위험도 추정',acc:.86,label:'86%'}
     ];
     function riskFrom(n){return n<35?'safe':n<67?'warning':'danger'}
-    function generateCase(){const content=weighted([{value:'treasure',weight:29},{value:'mimic',weight:17},{value:'explosive',weight:16},{value:'cursed',weight:20},{value:'junk',weight:18}]);let rs=content==='treasure'?rint(8,48):content==='junk'?rint(4,32):content==='cursed'?rint(42,82):content==='mimic'?rint(70,98):rint(65,100);const grade=weighted([{value:0,weight:38},{value:1,weight:27},{value:2,weight:19},{value:3,weight:11},{value:4,weight:5}]);const auth=content==='treasure'?(Math.random()<.73?'real':'fake'):'unknown';const d=contents[content],value=Math.round(rint(d.range[0],d.range[1])*(1+grade*.32));const visible=content==='mimic'?'가느다란 긁힘':content==='explosive'?'검은 그을음':content==='cursed'?'희미한 봉인 문양':content==='treasure'?(auth==='fake'?'최근 덧칠한 흔적':'금속 가루'):'느슨한 경첩';return{content,riskScore:rs,risk:riskFrom(rs),grade,auth,value,stability:rint(20,95),serial:`BX-${rint(1000,9999)}`,visible}}
-    function truthful(id){const c=current;if(id==='weight'){if(c.content==='mimic')return'측정할 때마다 무게 중심이 조금씩 달라집니다.';if(c.content==='explosive')return'한쪽에 밀도 높은 금속 덩어리가 잡힙니다.';if(c.content==='cursed')return'크기에 비해 지나치게 무겁습니다.';if(c.content==='treasure')return c.auth==='fake'?'귀중품 상자치고 지나치게 가볍습니다.':'작은 고밀도 물체가 여러 개 들어 있습니다.';return'내부 대부분이 비어 있는 무게입니다.'}
-      if(id==='temperature'){if(c.content==='explosive')return'잠금장치 주변 온도가 천천히 상승합니다.';if(c.content==='mimic')return'내부 중앙에서 미세한 체온이 감지됩니다.';if(c.content==='cursed')return'한쪽 면만 비정상적으로 차갑습니다.';return'온도가 고르게 유지됩니다.'}
-      if(id==='scan'){if(c.content==='explosive')return'원통형 부품과 연결 구조가 보입니다.';if(c.content==='mimic')return'내부 실루엣이 검사 중 미세하게 달라졌습니다.';if(c.content==='cursed')return'내부 대부분이 검게 막혀 있습니다.';if(c.content==='treasure')return'작은 고밀도 물체가 여러 개 보입니다.';return'불규칙한 물체가 느슨하게 흩어져 있습니다.'}
-      if(id==='surface'){if(c.content==='explosive')return'금속 부근에 열 변색과 그을음이 있습니다.';if(c.content==='mimic')return'안쪽에서 바깥으로 난 긁힘이 확인됩니다.';if(c.content==='cursed')return'봉인 문양의 방향이 정상과 다릅니다.';if(c.content==='treasure')return c.auth==='fake'?'최근 덧칠된 부분과 위조 도장이 보입니다.':'오래된 보관 흔적 외에는 손상이 적습니다.';return'경첩이 느슨하고 반복 사용 흔적이 많습니다.'}
-      if(id==='reagent'){if(c.content==='explosive')return'시약이 갈색으로 변하며 열을 냅니다.';if(c.content==='cursed')return'시약 표면에 검은 결정이 생깁니다.';if(c.content==='mimic')return'시약이 묽은 붉은색으로 변합니다.';if(c.content==='treasure'&&c.auth==='real')return'청색 반응이 안정적으로 유지됩니다.';return'뚜렷한 반응이 없습니다.'}
-      if(id==='seal'){if(c.content==='explosive')return'최근에 열었다가 급히 다시 봉인했습니다.';if(c.content==='mimic')return'봉인이 안쪽에서 눌린 흔적이 있습니다.';if(c.content==='cursed')return'봉인 문양 방향이 정상과 반대입니다.';if(c.content==='treasure')return c.auth==='fake'?'왁스의 재료와 운송 기록이 맞지 않습니다.':'봉인 상태와 운송 기록이 일치합니다.';return'봉인이 여러 번 다시 닫힌 흔적이 있습니다.'}}
-    const falseMap={weight:['예상 범위 안의 일반적인 무게입니다.','무게 중심이 고르게 잡혀 있습니다.'],temperature:['표면 온도는 실내와 거의 같습니다.','약한 냉기가 감지되지만 원인은 불분명합니다.'],scan:['작은 금속 물체가 여러 개 겹쳐 보입니다.','검사 장비 간섭으로 형태가 흐릿합니다.'],surface:['일반적인 운송 흔적만 남아 있습니다.','오래된 긁힘 외에는 특이점이 없습니다.'],reagent:['뚜렷한 시약 반응이 없습니다.','약한 청색 반응이 나타났다가 사라집니다.'],seal:['봉인은 원본 상태로 보입니다.','정상적으로 다시 봉인된 듯합니다.']};
+    function riskFromItemIndex(index){return index<5?'danger':index<10?'warning':'safe'}
+    function riskScoreFromItemIndex(index){
+      if(index<5)return 88-index*5;
+      if(index<10)return 64-(index-5)*6;
+      return 30-(index-10)*5;
+    }
+    function generateCase(){
+      const content='mimic';
+      const grade=weighted([{value:0,weight:38},{value:1,weight:27},{value:2,weight:19},{value:3,weight:11},{value:4,weight:5}]);
+      const itemIndex=rint(0,14);
+      const item=creatureItems[itemIndex];
+      const risk=riskFromItemIndex(itemIndex);
+      const rs=riskScoreFromItemIndex(itemIndex);
+      const value=Math.round(contents.mimic.saleReward*(1+grade*.15));
+      const visiblePools={
+        danger:['상자 안쪽에서 거친 충격음이 한 번 전해졌습니다.','잠금쇠 주변에 깊은 마찰 자국이 있습니다.','한쪽 벽이 바깥으로 조금 휘어 있습니다.','운송 중 상자가 두 차례 뒤집힌 기록이 있습니다.'],
+        warning:['상자가 가끔 짧게 흔들립니다.','바닥 모서리에 털과 먼지가 조금 끼어 있습니다.','안쪽에서 규칙적이지 않은 움직임이 느껴집니다.','통풍구 주변에 손댄 흔적이 있습니다.'],
+        safe:['상자 내부에서 작은 움직임이 느껴집니다.','통풍구 주변 상태가 비교적 깨끗합니다.','운송 중 특이사항이 거의 없습니다.','상자가 조용하지만 내부 온도는 유지됩니다.']
+      };
+      return{content,riskScore:rs,risk,grade,auth:'unknown',value,itemIndex,itemName:item.name,itemDescription:item.description,stability:rint(20,95),serial:`BX-${rint(1000,9999)}`,visible:pick(visiblePools[risk])}
+    }
+    function truthful(id){
+      const c=current,item=creatureItems[c.itemIndex];
+      if(id==='weight')return pick(item.weight);
+      if(id==='temperature')return pick([
+        '상자 안쪽에서 약한 체온성 열원이 감지됩니다.',
+        '내부 온도가 실내보다 조금 높고 미세하게 변합니다.',
+        '한 지점이 아니라 움직이는 열원이 잡힙니다.',
+        '통풍구 주변에서 생체 활동에 가까운 열 변화가 보입니다.'
+      ]);
+      if(id==='scan')return pick(item.scan);
+      if(id==='reagent')return pick(item.reagent);
+      if(id==='surface'){
+        const pools={
+          danger:['안쪽에서 바깥으로 난 깊은 긁힘이 여러 개 있습니다.','고정 장치가 강한 힘으로 반복해서 밀린 흔적이 있습니다.','상자 벽에 최근 생긴 충격 자국이 겹쳐 있습니다.','운송용 완충재가 안쪽에서 찢겨 있습니다.'],
+          warning:['얕은 긁힘과 털이 함께 발견됩니다.','잠금장치에 여러 번 건드린 흔적이 있습니다.','바닥에 움직임으로 생긴 마찰 자국이 있습니다.','통풍구 주변이 조금 손상됐지만 급격한 흔적은 아닙니다.'],
+          safe:['바닥에 가벼운 발톱 자국만 남아 있습니다.','외부 손상은 적고 안쪽도 비교적 정돈돼 있습니다.','작은 움직임 흔적 외에는 특이점이 없습니다.','완충재가 조금 눌렸지만 찢어진 곳은 없습니다.']
+        };
+        return pick(pools[c.risk]);
+      }
+      if(id==='seal'){
+        const pools={
+          danger:['고위험 생물용 이중 잠금이 사용됐으나 하나가 느슨합니다.','운송 중 봉인을 한 번 교체한 기록이 있습니다.','잠금 강도는 높지만 안쪽 압력 흔적이 남아 있습니다.','봉인 등급이 내용물 크기에 비해 과도하게 높습니다.'],
+          warning:['일반 생물용 봉인에 보조 잠금이 하나 더 있습니다.','봉인 상태는 유지되지만 한쪽 고리가 조금 늘어났습니다.','운송 담당자가 중간 단계에서 잠금을 보강했습니다.','표준보다 강한 봉인이지만 파손된 곳은 없습니다.'],
+          safe:['일반 생물 운송용 봉인이 정상적으로 유지됩니다.','봉인과 운송 기록이 대부분 일치합니다.','간단한 잠금만 사용됐고 손상 흔적은 없습니다.','통풍을 고려한 표준 봉인 방식입니다.']
+        };
+        return pick(pools[c.risk]);
+      }
+    }
+    const falseMap={weight:['가벼운 생물이 한쪽에 웅크린 듯합니다.','중간 크기 내용물이 바닥을 따라 움직입니다.','측정 중 움직임 때문에 값이 일정하지 않습니다.'],temperature:['내부에 약한 열원이 있으나 생체 여부는 불분명합니다.','표면 온도는 일정하지만 안쪽에서 작은 변화가 있습니다.','통풍구 주변만 실내보다 조금 따뜻합니다.'],scan:['네 발처럼 보이는 부분이 있으나 장비 간섭이 심합니다.','둥근 형체와 긴 형체가 겹쳐 보입니다.','움직임 때문에 윤곽이 두 개로 겹쳐 기록됐습니다.'],surface:['얕은 긁힘이 있지만 위험성을 판단하기 어렵습니다.','운송 중 생긴 흔적인지 내부에서 난 흔적인지 불분명합니다.','마찰 자국은 있으나 최근 흔적은 아닐 수 있습니다.'],reagent:['약한 생체 반응이 나타났다가 사라집니다.','털과 점액 성분이 함께 검출돼 판별이 어렵습니다.','포유류와 기타 생물 반응이 겹쳐 나옵니다.'],seal:['봉인은 정상으로 보이지만 한쪽 기록이 누락됐습니다.','보조 잠금이 있으나 실제 사용 여부는 알 수 없습니다.','봉인 강도만으로 위험도를 확정하기 어렵습니다.']};
+    function populateCreatureGuess(){contentGuess.innerHTML='<option value="unknown">판단 보류</option>'+creatureItems.map((item,index)=>`<option value="${index}">${item.name}</option>`).join('')}
     function createTools(){const list=$('#toolList');list.innerHTML='';tools.forEach(t=>{const b=document.createElement('button');b.className='tool-button';b.dataset.toolId=t.id;b.innerHTML=`<span class="tool-icon">${t.icon}</span><span><span class="tool-name">${t.name}</span><span class="tool-info">${t.info}</span></span><span class="tool-accuracy">${t.label}</span>`;b.onclick=()=>inspect(t);list.appendChild(b)})}
     function inspect(t){if(resolved||used>=MAX)return;used++;results.push({id:t.id,name:t.name,confidence:t.label,text:Math.random()<=t.acc?truthful(t.id):pick(falseMap[t.id])});insMode=t.id==='weight'?'lift':'inspect';insTime=0;updateInspection()}
     function updateInspection(){caseProgressText.textContent=`오늘의 의뢰 ${caseIndex+1} / ${TOTAL}`;quotaText.textContent=`목표 ${money(QUOTA)}`;dayProgressFill.style.width=`${Math.min(coins/QUOTA,1)*100}%`;inspectionMoneyValue.textContent=money(coins);accidentValue.textContent=accidents;caseNumber.textContent=`CASE ${String(caseIndex+1).padStart(2,'0')}`;caseName.textContent=chestNames[current.grade];caseSub.textContent=`${current.serial} · 외부 기록 불완전`;visibleCluesText.textContent=current.visible;
       $$('#inspectionCount .inspection-dot').forEach((d,i)=>{d.className='inspection-dot '+(i<used?'used':'available')});const clue=$('#clueList');clue.innerHTML=results.length?results.map((r,i)=>`<article class="clue-item"><div class="clue-head"><span class="clue-name">${i+1}. ${r.name}</span><span class="clue-confidence">신뢰도 ${r.confidence}</span></div><p class="clue-result">${r.text}</p></article>`).join(''):'<div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div>';
       $$('#toolList .tool-button').forEach(b=>b.disabled=resolved||used>=MAX||results.some(r=>r.id===b.dataset.toolId));$$('#inspectionGame .action-button').forEach(b=>b.disabled=resolved);contentGuess.disabled=riskGuess.disabled=resolved}
-    function resolveAction(action){if(resolved)return;resolved=true;const cc=contentGuess.value===current.content,rc=riskGuess.value===current.risk,bonus=(cc?120:0)+(rc?80:0);let base=0,title='',desc='',acc=false;
-      if(action==='sell'){base=current.value*.65;title='판매 완료';desc='상자를 현재 상태로 넘겼습니다.'}
-      if(action==='open'){if(current.content==='treasure'){if(current.auth==='fake'){base=current.value*.22;title='위조품 발견';desc='내용물은 정교하게 꾸며진 모조품이었습니다.'}else{base=current.value;title='귀중품 개봉';desc='온전한 귀중품을 확보했습니다.'}}else if(current.content==='junk'){base=current.value*.65;title='잡동사니';desc='쓸 만한 물건 몇 개를 건졌습니다.'}else if(current.content==='cursed'){const bad=Math.random()<current.riskScore/125;base=bad?current.value*.2-320:current.value*.9;acc=bad;title=bad?'봉인 파손':'저주 물품 확보';desc=bad?'저주가 작업대로 번졌습니다.':'위험했지만 물품을 회수했습니다.'}else if(current.content==='mimic'){const bad=Math.random()<.72;base=bad?-380:180;acc=bad;title=bad?'생물 탈출':'생물 포획';desc=bad?'상자 안의 생물이 작업실을 헤집고 도망쳤습니다.':'생물을 제압해 연구소에 넘겼습니다.'}else{const bad=Math.random()<current.riskScore/108;base=bad?-520:current.value*.8;acc=bad;title=bad?'폭발 사고':'폭발물 해체';desc=bad?'잠금장치를 건드리는 순간 폭발했습니다.':'기폭 장치를 피해서 내용물을 확보했습니다.'}}
+    function resolveAction(action){if(resolved)return;resolved=true;const cc=Number(contentGuess.value)===current.itemIndex,rc=riskGuess.value===current.risk,bonus=(cc?120:0)+(rc?80:0);let base=0,title='',desc='',acc=false;
+      if(action==='sell'){const saleMultiplier=current.risk==='danger'?.55:current.risk==='warning'?1:1.55;base=current.value*saleMultiplier;title='판매 완료';desc=`${current.itemName}을 판매했습니다.`}
+      if(action==='open'){if(current.content==='treasure'){if(current.auth==='fake'){base=current.value*.22;title='위조품 발견';desc='내용물은 정교하게 꾸며진 모조품이었습니다.'}else{base=current.value;title='귀중품 개봉';desc='온전한 귀중품을 확보했습니다.'}}else if(current.content==='junk'){base=current.value*.65;title='잡동사니';desc='쓸 만한 물건 몇 개를 건졌습니다.'}else if(current.content==='cursed'){const bad=Math.random()<current.riskScore/125;base=bad?current.value*.2-320:current.value*.9;acc=bad;title=bad?'봉인 파손':'저주 물품 확보';desc=bad?'저주가 작업대로 번졌습니다.':'위험했지만 물품을 회수했습니다.'}else if(current.content==='mimic'){const bad=Math.random()<current.riskScore/115;base=bad?-380:Math.round(current.value*.72);acc=bad;title=bad?'생물 탈출':'생물 포획';desc=bad?'상자 안의 생물이 작업실을 헤집고 도망쳤습니다.':'생물을 제압해 연구소에 넘겼습니다.'}else{const bad=Math.random()<current.riskScore/108;base=bad?-520:current.value*.8;acc=bad;title=bad?'폭발 사고':'폭발물 해체';desc=bad?'잠금장치를 건드리는 순간 폭발했습니다.':'기폭 장치를 피해서 내용물을 확보했습니다.'}}
       if(action==='upgrade'){let success=Math.min(.24+current.stability/170,.82),explode=.08+current.riskScore/230+(current.content==='explosive'?.22:0),roll=Math.random();if(roll<success){base=current.value*rand(1.5,2.2);title='강화 성공';desc='상자 외장과 봉인이 안정적으로 재구성됐습니다.'}else if(roll<success+explode){base=-600;acc=true;title='강화 폭주';desc='상자 구조가 버티지 못하고 파열됐습니다.'}else{base=current.value*.28;title='강화 실패';desc='상자는 남았지만 가치가 크게 손상됐습니다.'}}
-      if(action==='discard'){if(current.risk==='danger'){base=260+current.riskScore*2.2;title='위험물 처리';desc='위험한 상자를 정확히 격리했습니다.'}else if(current.risk==='warning'){base=90;title='예방 폐기';desc='안전 비용이 일부 지급됐습니다.'}else{base=-160;title='과잉 폐기';desc='안전한 상자를 버려 비용이 발생했습니다.'}}
-      if(acc)accidents++;const delta=Math.round(base+bonus);coins+=delta;inspectionResultKicker.textContent=acc?'INCIDENT REPORT':'CASE CLOSED';inspectionResultTitle.textContent=title;inspectionResultDescription.textContent=desc;inspectionResultMoney.textContent=(delta>=0?'+':'-')+money(Math.abs(delta));inspectionResultMoney.style.color=delta>=0?'var(--green)':'var(--red)';inspectionResultDetails.innerHTML=`<div class="result-detail-row"><span>실제 내용물</span><strong>${contents[current.content].label}</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>내용물 추리</span><strong>${cc?'정답 +120 G':'오답'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${rc?'정답 +80 G':'오답'}</strong></div>`;inspectionNextButton.textContent=caseIndex>=TOTAL-1?'오늘 정산':'다음 상자';inspectionResultLayer.classList.add('show');updateInspection()}
+      if(action==='discard'){base=discardRewards[current.risk];if(current.risk==='danger'){title='위험물 처리';desc='위험한 물품을 안전하게 폐기했습니다.'}else if(current.risk==='warning'){title='예방 폐기';desc='주의가 필요한 물품을 처리했습니다.'}else{title='과잉 폐기';desc='안전한 물품을 버려 비용이 발생했습니다.'}}
+      if(acc)accidents++;const delta=Math.round(base+bonus);coins+=delta;inspectionResultKicker.textContent=acc?'INCIDENT REPORT':'CASE CLOSED';inspectionResultTitle.textContent=title;inspectionResultDescription.textContent=desc;inspectionResultMoney.textContent=(delta>=0?'+':'-')+money(Math.abs(delta));inspectionResultMoney.style.color=delta>=0?'var(--green)':'var(--red)';inspectionResultDetails.innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${current.itemName}</strong></div><div class="result-detail-row"><span>설명</span><strong>${current.itemDescription}</strong></div><div class="result-detail-row"><span>카테고리</span><strong>${contents[current.content].label}</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>내용물 추리</span><strong>${cc?'정답 +120 G':'오답'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${rc?'정답 +80 G':'오답'}</strong></div>`;inspectionNextButton.textContent=caseIndex>=TOTAL-1?'오늘 정산':'다음 상자';inspectionResultLayer.classList.add('show');updateInspection()}
     function startCase(){current=generateCase();used=0;results=[];resolved=false;contentGuess.value=riskGuess.value='unknown';buildChest(insModel,current.grade);insRoot.visible=true;insRoot.position.set(0,.02,0);insRoot.scale.set(1,1,1);updateInspection()}
     function nextCase(){inspectionResultLayer.classList.remove('show');if(caseIndex>=TOTAL-1){showSummary();return}caseIndex++;startCase()}
     function showSummary(){inspectionResultLayer.classList.add('show');const ok=coins>=QUOTA;inspectionResultKicker.textContent='DAY REPORT';inspectionResultTitle.textContent=ok?'할당량 달성':'할당량 미달';inspectionResultDescription.textContent=ok?'오늘의 감정 업무를 마쳤습니다.':'목표 수익에 도달하지 못했습니다.';inspectionResultMoney.textContent=money(coins);inspectionResultMoney.style.color=ok?'var(--green)':'var(--red)';inspectionResultDetails.innerHTML=`<div class="result-detail-row"><span>목표 금액</span><strong>${money(QUOTA)}</strong></div><div class="result-detail-row"><span>최종 수익</span><strong>${money(coins)}</strong></div><div class="result-detail-row"><span>사고 횟수</span><strong>${accidents}회</strong></div>`;inspectionNextButton.textContent='새로운 하루 시작';inspectionNextButton.onclick=resetDay}
     function resetDay(){caseIndex=0;coins=0;accidents=0;inspectionResultLayer.classList.remove('show');inspectionNextButton.onclick=nextCase;startCase()}
-    createTools();startCase();$$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));inspectionNextButton.onclick=nextCase;restartInspectionButton.onclick=resetDay;
+    populateCreatureGuess();createTools();startCase();$$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));inspectionNextButton.onclick=nextCase;restartInspectionButton.onclick=resetDay;
 
     // Upgrade mode
     const up=makeScene($('#upgradeCanvas'),0xc9c6bf);const upRoot=new THREE.Group(),upModel=new THREE.Group();upRoot.add(upModel);upRoot.position.y=.02;upRoot.rotation.y=-.16;up.scene.add(upRoot);
@@ -230,7 +352,7 @@
     const tutorialSteps=[
       {target:'#tutorialToolsTarget',title:'조사부터 시작하세요',text:'왼쪽 조사 도구에서 필요한 검사를 고르세요. 상자 하나당 네 번만 조사할 수 있습니다.'},
       {target:'#tutorialCluesTarget',title:'단서를 비교하세요',text:'조사 결과는 오른쪽에 쌓입니다. 일부 검사는 틀릴 수 있으므로 여러 단서를 함께 봐야 합니다.'},
-      {target:'#tutorialGuessTarget',title:'내용물과 위험도를 추리하세요',text:'확인한 단서를 바탕으로 예상 내용물과 위험도를 선택하세요. 정답이면 추가 수익을 받습니다.'},
+      {target:'#tutorialGuessTarget',title:'생물과 위험도를 추리하세요',text:'네 번의 조사 결과를 비교해 상자 속 생물과 위험도를 선택하세요. 비슷한 단서가 섞여 있어 하나의 결과만 믿으면 틀릴 수 있습니다.'},
       {target:'#tutorialActionsTarget',title:'마지막 행동을 고르세요',text:'판매는 안전하고, 개봉과 강화는 위험하지만 큰 보상을 노릴 수 있습니다. 위험하면 폐기하세요.'}
     ];let tutIndex=0,tutActive=false;const tutOverlay=$('#tutorialOverlay'),tutFocus=$('#tutorialFocus'),tutCard=$('#tutorialCard');
     function startTutorial(){if(tutActive)return;tutActive=true;tutIndex=0;tutOverlay.classList.remove('hidden');updateTutorial()}
