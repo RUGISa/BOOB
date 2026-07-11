@@ -86,7 +86,7 @@
         </button>
         <button id="modeStorageButton" class="mode-button" type="button">
           <span class="mode-number">2</span>
-          <span><span class="mode-title">상자 적재소</span><span class="mode-description">돈으로 상자를 구매해 보관합니다. 구매한 상자는 실제로 위로 쌓이며 감정소에서 사용됩니다.</span></span>
+          <span><span class="mode-title">상자 적재소</span><span class="mode-description">돈으로 상자를 구매해 보관합니다. 한 더미에 5개씩, 최대 15개까지 쌓이며 감정소에서 사용됩니다.</span></span>
           <span class="mode-arrow">→</span>
         </button>
         <button id="resetSaveButton" class="reset-save" type="button">저장 데이터 초기화</button>
@@ -98,7 +98,7 @@
     <header class="topbar">
       <div class="brand"><div class="brand-mark">鑑</div><div><h1 class="brand-title">상자 감정소</h1><p class="brand-sub">적재소에서 가져온 상자를 감정합니다.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="inspectionInventoryText">보유 상자 0개</span><span>상자당 조사 4회</span></div><div class="progress-track"><div id="inventoryProgress" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">ACCIDENT</div><div id="accidentValue" class="stat-value">0</div></div><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><div class="stat-box"><div class="stat-label">ACCIDENT</div><div id="accidentValue" class="stat-value">0</div></div><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
     </header>
 
     <section class="inspection-layout">
@@ -162,6 +162,7 @@
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     const STORE_KEY='box_appraisal_connected_v1';
     const BOX_PRICE=200;
+    const MAX_BOXES=15;
     const riskLabel={safe:'안전',warning:'주의',danger:'위험'};
     const chestNames=['나무 상자','은 상자','금 상자','다이아 상자','봉인된 상자'];
     const chestValues=[450,518,585,653,720];
@@ -267,7 +268,7 @@
       updateInspectionUI();
     }
     function updateInspectionUI(){
-      $('#inspectionMoney').textContent=money(state.money);$('#inspectionInventoryText').textContent=`보유 상자 ${state.boxes.length}개`;$('#inventoryProgress').style.width=`${Math.min(state.boxes.length,10)*10}%`;$('#accidentValue').textContent=accidents;
+      $('#inspectionMoney').textContent=money(state.money);$('#inspectionInventoryText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#inventoryProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;$('#accidentValue').textContent=accidents;
       if(current){$('#caseNumber').textContent='STORED BOX';$('#caseName').textContent=chestNames[current.grade];$('#caseSub').textContent=`${current.id.split('-').slice(0,2).join('-')} · 미감정 상태`}else{$('#caseName').textContent='상자 없음';$('#caseSub').textContent='적재소에서 상자를 구매하세요'}
       $$('#inspectionCount .inspection-dot').forEach((d,i)=>d.className=`inspection-dot ${i<used?'used':'available'}`);
       $('#clueList').innerHTML=results.length?results.map((r,i)=>`<article class="clue-item"><div class="clue-head"><span class="clue-name">${i+1}. ${r.name}</span><span class="clue-confidence">정확</span></div><p class="clue-result">${r.text}</p></article>`).join(''):'<div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div>';
@@ -290,27 +291,42 @@
 
     function buildStorageStack(){
       clear(storageRoot);
-      const all=state.boxes;const visible=all.slice(-10);const count=visible.length;
-      if(!count)return;
-      const scale=Math.max(.22,.34-Math.max(0,count-5)*.012);
-      const chestMinY=-.965;const chestHeight=2.03;const platformTop=-1.03;
+      const visible=state.boxes.slice(0,MAX_BOXES);
+      if(!visible.length)return;
+
+      const scale=.29;
+      const chestMinY=-.965;
+      const chestHeight=2.03;
+      const platformTop=-1.03;
       const firstY=platformTop-chestMinY*scale+.018;
-      const step=chestHeight*scale+.045;
+      const step=chestHeight*scale+.05;
+      const columnX=[-1.12,0,1.12];
+
       visible.forEach((data,index)=>{
-        const g=new THREE.Group();buildChest(g,data.grade);g.scale.setScalar(scale);g.position.set((index%2===0?-1:1)*Math.min(.055,index*.008),firstY+index*step,(index%2===0?1:-1)*Math.min(.025,index*.004));g.rotation.y=(index%2===0?-1:1)*Math.min(.035,index*.006);storageRoot.add(g);
+        const column=Math.floor(index/5);
+        const row=index%5;
+        const g=new THREE.Group();
+        buildChest(g,data.grade);
+        g.scale.setScalar(scale);
+        g.position.set(columnX[column],firstY+row*step,0);
+        g.rotation.y=(column-1)*.025;
+        storageRoot.add(g);
       });
     }
     function buyBox(){
-      if(state.money<BOX_PRICE)return;
+      if(state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES)return;
       state.money-=BOX_PRICE;state.boxes.push(createBoxData());saveState();buildStorageStack();updateStorageUI();storageRoot.scale.set(.96,.96,.96);setTimeout(()=>storageRoot.scale.set(1,1,1),150);
     }
     function updateStorageUI(){
-      $('#storageMoney').textContent=money(state.money);$('#storageCount').textContent=state.boxes.length;$('#storageProgressText').textContent=`보유 상자 ${state.boxes.length}개`;$('#storageProgress').style.width=`${Math.min(state.boxes.length,10)*10}%`;$('#storageLabelTitle').textContent=state.boxes.length?`${state.boxes.length}개 적재 중`:'빈 적재대';$('#storageLabelSub').textContent=state.boxes.length>10?`최근 10개만 표시 · 외 ${state.boxes.length-10}개 보관 중`:'상자는 서로 겹치지 않도록 실제 높이에 맞춰 쌓입니다.';
-      $('#buyBoxButton').disabled=$('#buyAnotherButton').disabled=state.money<BOX_PRICE;$('#goInspectionButton').disabled=state.boxes.length===0;
-      const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.slice(0,12).map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]}</span></div>`).join('')+(state.boxes.length>12?`<div class="storage-row"><span>그 외</span><span>${state.boxes.length-12}개</span></div>`:''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
+      $('#storageMoney').textContent=money(state.money);$('#storageCount').textContent=state.boxes.length;$('#storageProgressText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#storageProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;$('#storageLabelTitle').textContent=state.boxes.length?`${state.boxes.length}개 적재 중`:'빈 적재대';$('#storageLabelSub').textContent=state.boxes.length>=MAX_BOXES?'보관 한도에 도달했습니다. 감정소에서 상자를 처리하세요.':'한 더미에 5개씩, 최대 15개까지 보관할 수 있습니다.';
+      const purchaseLocked=state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES;
+      $('#buyBoxButton').disabled=$('#buyAnotherButton').disabled=purchaseLocked;
+      $('#buyBoxButton').textContent=$('#buyAnotherButton').textContent=state.boxes.length>=MAX_BOXES?'보관 한도 15개':'상자 1개 구매';
+      $('#goInspectionButton').disabled=state.boxes.length===0;
+      const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]}</span></div>`).join(''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
       buildStorageStack();
     }
-    function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#inspectionMoney').textContent=money(state.money);$('#storageMoney').textContent=money(state.money)}
+    function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
 
     const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame');
     function showScreen(screen){[mainMenu,inspectionGame,storageGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
