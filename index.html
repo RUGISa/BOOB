@@ -47,7 +47,7 @@
     .clue-list{display:grid;gap:8px;margin-top:14px}.clue-empty{padding:20px 13px;border:1px dashed #c6c2b8;color:var(--faint);font-size:12px;line-height:1.6;text-align:center}.clue-item{padding:11px 12px;border:1px solid var(--line);background:#fff}.clue-head{display:flex;justify-content:space-between;gap:10px}.clue-name{font-size:12px;font-weight:900}.clue-confidence{color:var(--green);font-size:9px;font-weight:850}.clue-result{margin-top:6px;color:#55534e;font-size:12px;line-height:1.6}
     .guess-grid{display:grid;gap:11px;margin-top:14px}.field-label{display:block;margin-bottom:6px;color:var(--faint);font-size:10px;font-weight:850;letter-spacing:.08em}.select-box{width:100%;height:43px;padding:0 10px;border:1px solid var(--line-dark);border-radius:0;color:var(--text);background:#fff;font-size:12px;font-weight:750;outline:none}
     .bottom-panel{position:relative;z-index:20;min-height:120px;display:grid;grid-template-columns:minmax(260px,1fr) minmax(420px,620px) minmax(240px,1fr);align-items:center;gap:18px;padding:14px 22px;border-top:1px solid var(--line);background:rgba(248,247,243,.98)}.bottom-note{color:var(--sub);font-size:11px;line-height:1.65}.bottom-note strong{color:var(--text)}
-    .action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.action-button{min-height:66px;padding:8px;border:1px solid #bdb9b0;color:var(--text);background:#fff;transition:.12s ease}.action-button:hover:not(:disabled){color:#fff;background:#292927;transform:translateY(-2px)}.action-button:disabled{opacity:.4;cursor:default}.action-title{display:block;font-size:13px;font-weight:900}.action-info{display:block;margin-top:4px;font-size:10px;opacity:.72}
+    .action-grid{display:grid;grid-template-columns:minmax(240px,420px);justify-content:center;gap:8px}.action-button{min-height:66px;padding:8px;border:1px solid #bdb9b0;color:var(--text);background:#fff;transition:.12s ease}.action-button:hover:not(:disabled){color:#fff;background:#292927;transform:translateY(-2px)}.action-button:disabled{opacity:.4;cursor:default}.action-title{display:block;font-size:13px;font-weight:900}.action-info{display:block;margin-top:4px;font-size:10px;opacity:.72}
     .go-storage-button{justify-self:end;min-height:42px;padding:0 15px;border:1px solid var(--line-dark);color:var(--sub);background:transparent;font-size:10px;font-weight:850}.go-storage-button:hover{color:#fff;background:#292927}
     .empty-state{position:absolute;z-index:15;inset:0;display:grid;place-items:center;padding:24px;background:rgba(241,239,233,.82);backdrop-filter:blur(3px)}.empty-card{width:min(380px,100%);padding:28px;border:1px solid var(--line-dark);background:var(--paper);text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.1)}.empty-card h2{font-size:24px}.empty-card p{margin-top:10px;color:var(--sub);font-size:12px;line-height:1.7}.empty-card button{width:100%;min-height:46px;margin-top:18px;border:0;color:#fff;background:#292927;font-size:11px;font-weight:900}
 
@@ -58,7 +58,7 @@
     .rulebook-overlay{position:fixed;z-index:420;inset:0;display:grid;place-items:center;padding:26px;background:rgba(28,27,25,.58);backdrop-filter:blur(4px)}.rulebook-stack{position:relative;width:min(760px,100%)}.rule-sheet-back{position:absolute;inset:0;border:1px solid #cbc7bd;background:#f2f0ea}.rule-sheet-back.a{transform:rotate(-4deg) translate(-18px,12px)}.rule-sheet-back.b{transform:rotate(3.5deg) translate(18px,4px)}.rule-sheet{position:relative;padding:30px 32px 24px;border:1px solid #bdb8ad;background:linear-gradient(180deg,#fbfaf6,#f1eee6);box-shadow:0 34px 80px rgba(0,0,0,.18)}.rule-head{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid #d8d3c8}.rule-kicker{color:#9d6d4e;font-size:10px;font-weight:900;letter-spacing:.22em}.rule-title{margin-top:7px;font-size:32px;font-weight:950}.rule-sub{margin-top:6px;color:var(--sub);font-size:12px;line-height:1.7}.rule-stamp{padding:7px 10px;border:1px solid rgba(157,74,64,.44);color:#9d4a40;font-size:10px;font-weight:900;letter-spacing:.18em;transform:rotate(7deg)}.rule-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:16px;margin-top:18px}.rule-block{padding:15px 16px;border:1px solid #d7d2c6;background:rgba(255,255,255,.52)}.rule-block h3{font-size:15px}.rule-list{display:grid;gap:8px;margin-top:11px}.rule-item{display:grid;grid-template-columns:118px 1fr;gap:10px;font-size:12px;line-height:1.55}.rule-item span:first-child{color:#6f6559;font-weight:850}.rule-note{margin-top:14px;padding:12px 14px;border:1px dashed #c9c2b7;color:#5e584f;background:rgba(245,243,236,.9);font-size:11px;line-height:1.7}.rule-actions{display:flex;justify-content:flex-end;margin-top:18px}.rule-actions button{min-height:42px;padding:0 20px;border:0;color:#fff;background:#292927;font-size:11px;font-weight:850}
 
     @media(max-width:980px){.menu-shell{grid-template-columns:1fr}.menu-intro{min-height:320px;border-right:0;border-bottom:1px solid var(--line)}.inspection-layout{grid-template-columns:220px 1fr 255px}.bottom-panel,.storage-bottom{grid-template-columns:1fr minmax(420px,560px)}.bottom-note,.storage-info{display:none}.go-storage-button,.storage-reset{position:absolute;right:18px;bottom:5px;min-height:27px;border:0}.storage-layout{grid-template-columns:1fr 290px}}
-    @media(max-width:780px){html,body{overflow:auto}.screen{height:auto;min-height:100vh}.game-screen{height:auto;min-height:100vh;display:block}.topbar{grid-template-columns:1fr 1fr}.progress-box{grid-column:1/-1;grid-row:2;min-width:0}.inspection-layout{display:flex;flex-direction:column}.scene-column,.storage-scene{height:500px}.side-panel.left,.side-panel.right{border:0;border-top:1px solid var(--line)}.bottom-panel,.storage-bottom{display:block}.action-grid{grid-template-columns:repeat(2,1fr)}.go-storage-button,.storage-reset{position:static;width:100%;margin-top:10px;border:1px solid var(--line-dark)}.storage-layout{display:block}.storage-sidebar{border-left:0;border-top:1px solid var(--line)}.rule-grid{grid-template-columns:1fr}}
+    @media(max-width:780px){html,body{overflow:auto}.screen{height:auto;min-height:100vh}.game-screen{height:auto;min-height:100vh;display:block}.topbar{grid-template-columns:1fr 1fr}.progress-box{grid-column:1/-1;grid-row:2;min-width:0}.inspection-layout{display:flex;flex-direction:column}.scene-column,.storage-scene{height:500px}.side-panel.left,.side-panel.right{border:0;border-top:1px solid var(--line)}.bottom-panel,.storage-bottom{display:block}.action-grid{grid-template-columns:1fr}.go-storage-button,.storage-reset{position:static;width:100%;margin-top:10px;border:1px solid var(--line-dark)}.storage-layout{display:block}.storage-sidebar{border-left:0;border-top:1px solid var(--line)}.rule-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -81,7 +81,7 @@
         </div>
         <button id="modeInspectionButton" class="mode-button" type="button">
           <span class="mode-number">1</span>
-          <span><span class="mode-title">상자 감정소</span><span class="mode-description">보유한 상자를 한 개 꺼내 네 번 조사하고 판매, 개봉, 강화, 폐기를 결정합니다.</span></span>
+          <span><span class="mode-title">상자 감정소</span><span class="mode-description">보유한 상자를 한 개 꺼내 네 번 조사하고 카테고리와 위험도를 맞힌 뒤 개봉합니다.</span></span>
           <span class="mode-arrow">→</span>
         </button>
         <button id="modeStorageButton" class="mode-button" type="button">
@@ -98,31 +98,31 @@
     <header class="topbar">
       <div class="brand"><div class="brand-mark">鑑</div><div><h1 class="brand-title">상자 감정소</h1><p class="brand-sub">적재소에서 가져온 상자를 감정합니다.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="inspectionInventoryText">보유 상자 0개</span><span>상자당 조사 4회</span></div><div class="progress-track"><div id="inventoryProgress" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><div class="stat-box"><div class="stat-label">ACCIDENT</div><div id="accidentValue" class="stat-value">0</div></div><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
     </header>
 
     <section class="inspection-layout">
       <aside class="side-panel left">
         <section class="panel-section"><p class="section-label">INSPECTION</p><h2 class="section-title">조사 도구</h2><p class="section-description">조사 결과는 항상 정확합니다. 다만 정답을 직접 말하지 않고 특징만 보여줍니다.</p><div id="inspectionCount" class="inspection-count"><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span></div><div id="toolList" class="tool-list"></div></section>
-        <section class="panel-section"><p class="section-label">LINK</p><h2 class="section-title">적재소 연계</h2><p class="section-description">행동을 확정하면 현재 상자 한 개가 보관 목록에서 빠집니다. 남은 상자가 없으면 적재소에서 다시 구매해야 합니다.</p></section>
+        <section class="panel-section"><p class="section-label">LINK</p><h2 class="section-title">적재소 연계</h2><p class="section-description">개봉하면 현재 상자 한 개가 보관 목록에서 빠집니다. 남은 상자가 없으면 적재소에서 다시 구매해야 합니다.</p></section>
       </aside>
 
       <section id="inspectionScene" class="scene-column">
         <canvas id="inspectionCanvas"></canvas>
         <div class="case-label"><p id="caseNumber">STORED BOX</p><h2 id="caseName">상자 없음</h2><small id="caseSub">적재소에서 상자를 구매하세요</small></div>
         <div id="inspectionEmpty" class="empty-state hidden"><div class="empty-card"><h2>감정할 상자가 없습니다</h2><p>적재소에서 상자를 구매하면 이곳에서 바로 조사할 수 있습니다.</p><button id="emptyGoStorage" type="button">적재소로 이동</button></div></div>
-        <div id="resultLayer" class="result-layer"><article class="result-card"><p id="resultKicker" class="result-kicker">CASE CLOSED</p><h2 id="resultTitle" class="result-title">판매 완료</h2><p id="resultDescription" class="result-description"></p><div id="resultMoney" class="result-money"></div><div id="resultDetails" class="result-details"></div><button id="resultNext" class="result-button" type="button">다음 상자</button></article></div>
+        <div id="resultLayer" class="result-layer"><article class="result-card"><p id="resultKicker" class="result-kicker">ANSWER CHECK</p><h2 id="resultTitle" class="result-title">정답 공개</h2><p id="resultDescription" class="result-description"></p><div id="resultMoney" class="result-money"></div><div id="resultDetails" class="result-details"></div><button id="resultNext" class="result-button" type="button">다음 상자</button></article></div>
       </section>
 
       <aside class="side-panel right">
         <section class="panel-section"><p class="section-label">FINDINGS</p><h2 class="section-title">조사 기록</h2><div id="clueList" class="clue-list"><div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div></div></section>
-        <section class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">현재는 생물 카테고리만 들어옵니다. 위험도 판단이 처리 수익에 중요합니다.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
+        <section class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">조사 결과를 바탕으로 카테고리와 위험도를 선택한 뒤 상자를 개봉하세요.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
       </aside>
     </section>
 
     <footer class="bottom-panel">
-      <p class="bottom-note"><strong>카테고리 정답</strong> +120 G · <strong>위험도 정답</strong> +80 G<br>개봉과 강화는 정답과 별도로 사고 판정을 합니다.</p>
-      <div class="action-grid"><button class="action-button" data-action="sell"><span class="action-title">판매</span><span class="action-info">안전할수록 수익 증가</span></button><button class="action-button" data-action="open"><span class="action-title">개봉</span><span class="action-info">직접 확인 · 사고 가능</span></button><button class="action-button" data-action="upgrade"><span class="action-title">강화</span><span class="action-info">가치 상승 또는 사고</span></button><button class="action-button" data-action="discard"><span class="action-title">폐기</span><span class="action-info">위험할수록 수당 증가</span></button></div>
+      <p class="bottom-note"><strong>카테고리 정답</strong> +120 G · <strong>위험도 정답</strong> +80 G<br>개봉하면 정답이 공개되고 현재 상자 한 개가 소모됩니다.</p>
+      <div class="action-grid"><button class="action-button" data-action="open"><span class="action-title">상자 개봉</span><span class="action-info">추리 결과 확인</span></button></div>
       <button id="goStorageButton" class="go-storage-button" type="button">적재소로 이동</button>
     </footer>
   </main>
@@ -153,7 +153,7 @@
   </main>
 
   <div id="ruleOverlay" class="rulebook-overlay hidden">
-    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 처리해 다시 돈을 버는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 200 G로 상자 구매<br>2. 감정소에서 상자 한 개 조사<br>3. 판매·개봉·강화·폐기 중 선택<br>4. 수익으로 다시 상자 구매</div><div class="rule-note">판매: 안전 ++ / 주의 + / 위험 -<br>폐기: 위험 ++ / 주의 + / 안전 -</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
+    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 조사한 뒤 정답을 맞히는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 200 G로 상자 구매<br>2. 감정소에서 상자 한 개를 최대 4회 조사<br>3. 카테고리와 위험도 선택<br>4. 개봉해 정답 확인</div><div class="rule-note">카테고리 정답: +120 G<br>위험도 정답: +80 G<br>오답에는 보상이 없습니다.</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
   </div>
 
   <script type="module">
@@ -268,7 +268,7 @@
       updateInspectionUI();
     }
     function updateInspectionUI(){
-      $('#inspectionMoney').textContent=money(state.money);$('#inspectionInventoryText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#inventoryProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;$('#accidentValue').textContent=accidents;
+      $('#inspectionMoney').textContent=money(state.money);$('#inspectionInventoryText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#inventoryProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;
       if(current){$('#caseNumber').textContent='STORED BOX';$('#caseName').textContent=chestNames[current.grade];$('#caseSub').textContent=`${current.id.split('-').slice(0,2).join('-')} · 미감정 상태`}else{$('#caseName').textContent='상자 없음';$('#caseSub').textContent='적재소에서 상자를 구매하세요'}
       $$('#inspectionCount .inspection-dot').forEach((d,i)=>d.className=`inspection-dot ${i<used?'used':'available'}`);
       $('#clueList').innerHTML=results.length?results.map((r,i)=>`<article class="clue-item"><div class="clue-head"><span class="clue-name">${i+1}. ${r.name}</span><span class="clue-confidence">정확</span></div><p class="clue-result">${r.text}</p></article>`).join(''):'<div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div>';
@@ -276,17 +276,27 @@
       $$('#inspectionGame .action-button').forEach(b=>b.disabled=!current||resolved);$('#contentGuess').disabled=$('#riskGuess').disabled=!current||resolved;
     }
     function resolveAction(action){
-      if(!current||resolved)return;resolved=true;
-      const item=creatureItems[current.itemIndex],cc=$('#contentGuess').value==='mimic',rc=$('#riskGuess').value===current.risk,bonus=(cc?120:0)+(rc?80:0);let base=0,title='',desc='',accident=false;
-      if(action==='sell'){const mult=current.risk==='danger'?.55:current.risk==='warning'?1:1.55;base=chestValues[current.grade]*mult;title='판매 완료';desc=`${item.name}을 판매했습니다.`}
-      if(action==='discard'){base=current.risk==='danger'?600:current.risk==='warning'?250:-150;title=current.risk==='danger'?'위험 생물 처리':current.risk==='warning'?'예방 폐기':'과잉 폐기';desc=current.risk==='safe'?'안전한 생물을 버려 비용이 발생했습니다.':'생물을 규정에 따라 처리했습니다.'}
-      if(action==='open'){const riskScore=current.risk==='danger'?.65:current.risk==='warning'?.32:.08;const bad=Math.random()<riskScore;base=bad?-380:Math.round(chestValues[current.grade]*.72);accident=bad;title=bad?'생물 탈출':'생물 포획';desc=bad?'상자 안의 생물이 작업실을 헤집고 도망쳤습니다.':'생물을 안전하게 포획해 넘겼습니다.'}
-      if(action==='upgrade'){const success=Math.min(.34+current.stability/170,.84),collapse=current.risk==='danger'?.25:current.risk==='warning'?.13:.06,roll=Math.random();if(roll<success){base=chestValues[current.grade]*rand(1.5,2.15);title='강화 성공';desc='상자 외장과 봉인을 보강해 높은 값에 넘겼습니다.'}else if(roll<success+collapse){base=-600;title='강화 사고';desc='상자 구조가 버티지 못하고 파열됐습니다.';accident=true}else{base=chestValues[current.grade]*.28;title='강화 실패';desc='상자는 남았지만 가치가 크게 손상됐습니다.'}}
-      if(accident)accidents++;
-      const delta=Math.round(base+bonus);state.money+=delta;state.boxes.shift();saveState();
-      $('#resultKicker').textContent=accident?'INCIDENT REPORT':'CASE CLOSED';$('#resultTitle').textContent=title;$('#resultDescription').textContent=desc;$('#resultMoney').textContent=(delta>=0?'+':'-')+money(Math.abs(delta));$('#resultMoney').style.color=delta>=0?'var(--green)':'var(--red)';
-      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>카테고리</span><strong>생물</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${cc?'정답 +120 G':'오답'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${rc?'정답 +80 G':'오답'}</strong></div>`;
-      $('#resultNext').textContent=state.boxes.length?'다음 보유 상자':'적재소로 이동';$('#resultLayer').classList.add('show');updateInspectionUI();updateStorageUI();
+      if(!current||resolved||action!=="open")return;
+      resolved=true;
+      const item=creatureItems[current.itemIndex];
+      const categoryCorrect=$('#contentGuess').value==='mimic';
+      const riskCorrect=$('#riskGuess').value===current.risk;
+      const reward=(categoryCorrect?120:0)+(riskCorrect?80:0);
+
+      state.money+=reward;
+      state.boxes.shift();
+      saveState();
+
+      $('#resultKicker').textContent='ANSWER CHECK';
+      $('#resultTitle').textContent=reward===200?'완벽한 감정':reward>0?'일부 정답':'감정 실패';
+      $('#resultDescription').textContent=`상자를 열어 ${item.name}을(를) 확인했습니다.`;
+      $('#resultMoney').textContent=`+${money(reward)}`;
+      $('#resultMoney').style.color=reward>0?'var(--green)':'var(--sub)';
+      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>실제 카테고리</span><strong>생물</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${categoryCorrect?'정답 +120 G':'오답 +0 G'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${riskCorrect?'정답 +80 G':'오답 +0 G'}</strong></div>`;
+      $('#resultNext').textContent=state.boxes.length?'다음 보유 상자':'적재소로 이동';
+      $('#resultLayer').classList.add('show');
+      updateInspectionUI();
+      updateStorageUI();
     }
 
     function buildStorageStack(){
@@ -337,7 +347,7 @@
     $('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=goInspection;
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
-    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[]};accidents=0;saveState();updateStorageUI();goMain()}};
+    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[]};saveState();updateStorageUI();goMain()}};
     $('#ruleButton').onclick=()=>$('#ruleOverlay').classList.remove('hidden');$('#ruleClose').onclick=()=>$('#ruleOverlay').classList.add('hidden');
     $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox();else goStorage()};
     $$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));
