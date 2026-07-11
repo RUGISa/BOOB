@@ -57,6 +57,24 @@
 
     .rulebook-overlay{position:fixed;z-index:420;inset:0;display:grid;place-items:center;padding:26px;background:rgba(28,27,25,.58);backdrop-filter:blur(4px)}.rulebook-stack{position:relative;width:min(760px,100%)}.rule-sheet-back{position:absolute;inset:0;border:1px solid #cbc7bd;background:#f2f0ea}.rule-sheet-back.a{transform:rotate(-4deg) translate(-18px,12px)}.rule-sheet-back.b{transform:rotate(3.5deg) translate(18px,4px)}.rule-sheet{position:relative;padding:30px 32px 24px;border:1px solid #bdb8ad;background:linear-gradient(180deg,#fbfaf6,#f1eee6);box-shadow:0 34px 80px rgba(0,0,0,.18)}.rule-head{display:flex;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid #d8d3c8}.rule-kicker{color:#9d6d4e;font-size:10px;font-weight:900;letter-spacing:.22em}.rule-title{margin-top:7px;font-size:32px;font-weight:950}.rule-sub{margin-top:6px;color:var(--sub);font-size:12px;line-height:1.7}.rule-stamp{padding:7px 10px;border:1px solid rgba(157,74,64,.44);color:#9d4a40;font-size:10px;font-weight:900;letter-spacing:.18em;transform:rotate(7deg)}.rule-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:16px;margin-top:18px}.rule-block{padding:15px 16px;border:1px solid #d7d2c6;background:rgba(255,255,255,.52)}.rule-block h3{font-size:15px}.rule-list{display:grid;gap:8px;margin-top:11px}.rule-item{display:grid;grid-template-columns:118px 1fr;gap:10px;font-size:12px;line-height:1.55}.rule-item span:first-child{color:#6f6559;font-weight:850}.rule-note{margin-top:14px;padding:12px 14px;border:1px dashed #c9c2b7;color:#5e584f;background:rgba(245,243,236,.9);font-size:11px;line-height:1.7}.rule-actions{display:flex;justify-content:flex-end;margin-top:18px}.rule-actions button{min-height:42px;padding:0 20px;border:0;color:#fff;background:#292927;font-size:11px;font-weight:850}
 
+
+    .main-menu{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 25% 18%,rgba(255,255,255,.92),transparent 28%),linear-gradient(135deg,#dad7cf 0%,#efeee9 52%,#d8d4ca 100%)}
+    .main-menu::before{content:"";position:absolute;z-index:-2;inset:0;background:repeating-linear-gradient(90deg,transparent 0 79px,rgba(32,31,29,.035) 80px),linear-gradient(180deg,transparent 0 68%,rgba(36,34,30,.08) 68% 69%,transparent 69%)}
+    .main-menu::after{content:"";position:absolute;z-index:-1;left:5%;right:5%;bottom:-16%;height:42%;background:linear-gradient(90deg,rgba(35,34,31,.14),rgba(35,34,31,.03));clip-path:polygon(0 42%,11% 42%,11% 18%,23% 18%,23% 53%,35% 53%,35% 0,49% 0,49% 34%,62% 34%,62% 10%,75% 10%,75% 48%,88% 48%,88% 25%,100% 25%,100% 100%,0 100%);filter:blur(.2px)}
+    .menu-shell{position:relative;overflow:hidden;box-shadow:0 42px 110px rgba(24,23,21,.22)}
+    .menu-intro{position:relative;background:linear-gradient(160deg,#151514,#2d2d2a 64%,#1d1d1b)}
+    .menu-intro::after{content:"WAREHOUSE  •  APPRAISAL  •  REPEAT";position:absolute;right:-122px;bottom:128px;color:rgba(255,255,255,.06);font-size:22px;font-weight:900;letter-spacing:.22em;transform:rotate(-90deg)}
+    .menu-title{max-width:470px;text-shadow:0 12px 32px rgba(0,0,0,.28)}
+    .start-loop-button{min-height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border:0;color:#fff;background:#292927;box-shadow:0 8px 0 #121211;font-size:15px;font-weight:950;letter-spacing:-.025em;transition:.14s ease}
+    .start-loop-button span:last-child{font-size:22px}.start-loop-button:hover{transform:translateY(-2px);box-shadow:0 10px 0 #121211}.start-loop-button:active{transform:translateY(5px);box-shadow:0 3px 0 #121211}
+    .location-caption{margin:9px 0 2px;color:var(--faint);font-size:9px;font-weight:850;letter-spacing:.14em}
+    .mode-button{min-height:112px}.mode-number{background:#f6f4ee}
+    .main-menu.first-run .menu-stats,.main-menu.first-run .location-caption,.main-menu.first-run .mode-button,.main-menu.first-run .reset-save{display:none}.main-menu.first-run .menu-options{justify-content:center}.main-menu.first-run .start-loop-button{min-height:82px;font-size:17px}
+
+    .guide-overlay{position:fixed;z-index:800;inset:0;pointer-events:none}.guide-focus{position:fixed;z-index:2;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(15,15,14,.76),0 0 0 7px rgba(255,255,255,.12),0 16px 45px rgba(0,0,0,.28);transition:.28s ease;animation:guidePulse 1.4s ease-in-out infinite}.guide-card{position:fixed;z-index:3;width:min(380px,calc(100vw - 28px));padding:22px;border:1px solid #262522;background:#faf9f5;box-shadow:0 24px 70px rgba(0,0,0,.28);pointer-events:auto}.guide-kicker{color:#8d745d;font-size:9px;font-weight:900;letter-spacing:.16em}.guide-title{margin-top:6px;font-size:21px;font-weight:950;letter-spacing:-.04em}.guide-text{margin-top:8px;color:var(--sub);font-size:12px;line-height:1.72}.guide-task{margin-top:13px;padding:11px 12px;border-left:3px solid #292927;background:#ece9e1;color:#373530;font-size:11px;font-weight:850;line-height:1.55}.guide-progress{display:flex;gap:5px;margin-top:15px}.guide-progress span{height:5px;flex:1;border-radius:999px;background:#d8d4cb}.guide-progress span.done{background:#292927}.guide-actions{display:flex;gap:8px;margin-top:17px}.guide-skip,.guide-next{min-height:42px;padding:0 14px;border:1px solid var(--line-dark);font-size:10px;font-weight:900}.guide-skip{color:var(--sub);background:transparent}.guide-next{flex:1;border:0;color:#fff;background:#292927}.guide-next:disabled{color:#918e87;background:#d6d2ca;cursor:default}@keyframes guidePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18)}}
+    .drop-flash{position:absolute;z-index:7;left:50%;top:50%;width:180px;height:64px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,230,168,.7),rgba(255,230,168,.12) 46%,transparent 72%);filter:blur(8px);opacity:0;transform:translate(-50%,-50%);pointer-events:none;mix-blend-mode:screen}.drop-flash.show{animation:dropFlash .55s ease-out}
+    @keyframes dropFlash{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}35%{opacity:.85}100%{opacity:0;transform:translate(-50%,-50%) scale(1.45)}}
+
     @media(max-width:980px){.menu-shell{grid-template-columns:1fr}.menu-intro{min-height:320px;border-right:0;border-bottom:1px solid var(--line)}.inspection-layout{grid-template-columns:220px 1fr 255px}.bottom-panel,.storage-bottom{grid-template-columns:1fr minmax(420px,560px)}.bottom-note,.storage-info{display:none}.go-storage-button,.storage-reset{position:absolute;right:18px;bottom:5px;min-height:27px;border:0}.storage-layout{grid-template-columns:1fr 290px}}
     @media(max-width:780px){html,body{overflow:auto}.screen{height:auto;min-height:100vh}.game-screen{height:auto;min-height:100vh;display:block}.topbar{grid-template-columns:1fr 1fr}.progress-box{grid-column:1/-1;grid-row:2;min-width:0}.inspection-layout{display:flex;flex-direction:column}.scene-column,.storage-scene{height:500px}.side-panel.left,.side-panel.right{border:0;border-top:1px solid var(--line)}.bottom-panel,.storage-bottom{display:block}.action-grid{grid-template-columns:1fr}.go-storage-button,.storage-reset{position:static;width:100%;margin-top:10px;border:1px solid var(--line-dark)}.storage-layout{display:block}.storage-sidebar{border-left:0;border-top:1px solid var(--line)}.rule-grid{grid-template-columns:1fr}}
   </style>
@@ -79,6 +97,8 @@
           <div class="menu-stat"><span>MONEY</span><strong id="menuMoney">1,000 G</strong></div>
           <div class="menu-stat"><span>OWNED BOXES</span><strong id="menuBoxes">0개</strong></div>
         </div>
+        <button id="startLoopButton" class="start-loop-button" type="button"><span>임무 시작</span><span>→</span></button>
+        <p class="location-caption">DIRECT ACCESS</p>
         <button id="modeInspectionButton" class="mode-button" type="button">
           <span class="mode-number">1</span>
           <span><span class="mode-title">상자 감정소</span><span class="mode-description">보유한 상자를 한 개 꺼내 네 번 조사하고 카테고리와 위험도를 맞힌 뒤 개봉합니다.</span></span>
@@ -102,7 +122,7 @@
     </header>
 
     <section class="inspection-layout">
-      <aside class="side-panel left">
+      <aside id="guideToolsTarget" class="side-panel left">
         <section class="panel-section"><p class="section-label">INSPECTION</p><h2 class="section-title">조사 도구</h2><p class="section-description">조사 결과는 항상 정확합니다. 다만 정답을 직접 말하지 않고 특징만 보여줍니다.</p><div id="inspectionCount" class="inspection-count"><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span><span class="inspection-dot available"></span></div><div id="toolList" class="tool-list"></div></section>
         <section class="panel-section"><p class="section-label">LINK</p><h2 class="section-title">적재소 연계</h2><p class="section-description">개봉하면 현재 상자 한 개가 보관 목록에서 빠집니다. 남은 상자가 없으면 적재소에서 다시 구매해야 합니다.</p></section>
       </aside>
@@ -115,14 +135,14 @@
       </section>
 
       <aside class="side-panel right">
-        <section class="panel-section"><p class="section-label">FINDINGS</p><h2 class="section-title">조사 기록</h2><div id="clueList" class="clue-list"><div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div></div></section>
-        <section class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">조사 결과를 바탕으로 카테고리와 위험도를 선택한 뒤 상자를 개봉하세요.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
+        <section id="guideCluesTarget" class="panel-section"><p class="section-label">FINDINGS</p><h2 class="section-title">조사 기록</h2><div id="clueList" class="clue-list"><div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div></div></section>
+        <section id="guideGuessTarget" class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">조사 결과를 바탕으로 카테고리와 위험도를 선택한 뒤 상자를 개봉하세요.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
       </aside>
     </section>
 
     <footer class="bottom-panel">
-      <p class="bottom-note"><strong>카테고리 정답</strong> +120 G · <strong>위험도 정답</strong> +80 G<br>개봉하면 정답이 공개되고 현재 상자 한 개가 소모됩니다.</p>
-      <div class="action-grid"><button class="action-button" data-action="open"><span class="action-title">상자 개봉</span><span class="action-info">추리 결과 확인</span></button></div>
+      <p class="bottom-note"><strong>카테고리 정답</strong> +150 G · <strong>위험도 정답</strong> +150 G<br>둘 다 맞히면 총 300 G를 받습니다.</p>
+      <div id="guideOpenTarget" class="action-grid"><button class="action-button" data-action="open"><span class="action-title">상자 개봉</span><span class="action-info">추리 결과 확인</span></button></div>
       <button id="goStorageButton" class="go-storage-button" type="button">적재소로 이동</button>
     </footer>
   </main>
@@ -136,7 +156,7 @@
 
     <section class="storage-layout">
       <section id="storageScene" class="storage-scene">
-        <canvas id="storageCanvas"></canvas>
+        <canvas id="storageCanvas"></canvas><div id="dropFlash" class="drop-flash"></div>
         <div class="storage-label"><p>CONNECTED STORAGE</p><h2 id="storageLabelTitle">빈 적재대</h2><small id="storageLabelSub">상자를 구매하면 아래에서부터 차곡차곡 쌓입니다.</small></div>
       </section>
       <aside class="storage-sidebar">
@@ -152,8 +172,10 @@
     </footer>
   </main>
 
+  <div id="guideOverlay" class="guide-overlay hidden"><div id="guideFocus" class="guide-focus"></div><article id="guideCard" class="guide-card"><p id="guideKicker" class="guide-kicker">FIRST SHIFT</p><h2 id="guideTitle" class="guide-title">상자를 먼저 구매하세요</h2><p id="guideText" class="guide-text"></p><div id="guideTask" class="guide-task">강조된 버튼을 직접 눌러주세요.</div><div id="guideProgress" class="guide-progress"></div><div class="guide-actions"><button id="guideSkip" class="guide-skip" type="button">건너뛰기</button><button id="guideNext" class="guide-next" type="button">다음</button></div></article></div>
+
   <div id="ruleOverlay" class="rulebook-overlay hidden">
-    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 조사한 뒤 정답을 맞히는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 200 G로 상자 구매<br>2. 감정소에서 상자 한 개를 최대 4회 조사<br>3. 카테고리와 위험도 선택<br>4. 개봉해 정답 확인</div><div class="rule-note">카테고리 정답: +120 G<br>위험도 정답: +80 G<br>오답에는 보상이 없습니다.</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
+    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 조사한 뒤 정답을 맞히는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 상자 1개 구매: <strong>-200 G</strong><br>2. 감정소에서 최대 4회 조사<br>3. 카테고리와 위험도 선택<br>4. 개봉하면 정답 항목에 따라 보상을 받습니다.</div><div class="rule-note">카테고리 정답: <strong>+150 G</strong><br>위험도 정답: <strong>+150 G</strong><br>둘 다 정답: <strong>총 300 G</strong></div><div class="rule-note">둘 다 오답: 0 G<br>하나 정답: 150 G<br>둘 다 정답: 300 G</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
   </div>
 
   <script type="module">
@@ -162,6 +184,8 @@
     const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
     const STORE_KEY='box_appraisal_connected_v1';
     const BOX_PRICE=200;
+    const CATEGORY_REWARD=150;
+    const RISK_REWARD=150;
     const MAX_BOXES=15;
     const riskLabel={safe:'안전',warning:'주의',danger:'위험'};
     const chestNames=['나무 상자','은 상자','금 상자','다이아 상자','봉인된 상자'];
@@ -198,9 +222,9 @@
     function loadState(){
       try{
         const raw=JSON.parse(localStorage.getItem(STORE_KEY));
-        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes))return raw;
+        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes))return{...raw,tutorialDone:Boolean(raw.tutorialDone)};
       }catch(error){console.warn(error)}
-      return{money:1000,boxes:[]};
+      return{money:1000,boxes:[],tutorialDone:false};
     }
     function saveState(){localStorage.setItem(STORE_KEY,JSON.stringify(state));updateGlobalUI()}
     const money=v=>`${Math.round(v).toLocaleString('ko-KR')} G`;
@@ -237,6 +261,7 @@
     const inspectionRoot=new THREE.Group(),inspectionModel=new THREE.Group();inspectionRoot.add(inspectionModel);inspectionRoot.position.y=.02;inspectionRoot.rotation.y=-.16;inspectionPack.scene.add(inspectionRoot);
     const storagePack=makeScene($('#storageCanvas'));
     const storageRoot=new THREE.Group();storageRoot.rotation.y=-.12;storagePack.scene.add(storageRoot);
+    const storageDropLight=new THREE.PointLight(0xffd996,0,5,2);storageDropLight.position.set(0,4,2);storagePack.scene.add(storageDropLight);
 
     const tools=[
       {id:'weight',icon:'㎏',name:'무게 측정',info:'내용물의 특징'},
@@ -260,7 +285,7 @@
       const list=$('#toolList');list.innerHTML='';
       tools.forEach(t=>{const b=document.createElement('button');b.className='tool-button';b.dataset.tool=t.id;b.innerHTML=`<span class="tool-icon">${t.icon}</span><span><span class="tool-name">${t.name}</span><span class="tool-info">${t.info}</span></span><span class="tool-accuracy">정확</span>`;b.onclick=()=>inspect(t);list.appendChild(b)});
     }
-    function inspect(tool){if(!current||resolved||used>=4)return;used++;results.push({id:tool.id,name:tool.name,text:truthful(tool.id)});insMode=tool.id==='weight'?'lift':'inspect';insTime=0;updateInspectionUI()}
+    function inspect(tool){if(!current||resolved||used>=4)return;used++;results.push({id:tool.id,name:tool.name,text:truthful(tool.id)});insMode=tool.id==='weight'?'lift':'inspect';insTime=0;updateInspectionUI();advanceInspectionGuide('tool',tool.id)}
 
     function beginCurrentBox(){
       current=state.boxes.length?state.boxes[0]:null;used=0;results=[];resolved=false;$('#contentGuess').value='unknown';$('#riskGuess').value='unknown';$('#resultLayer').classList.remove('show');
@@ -281,29 +306,33 @@
       const item=creatureItems[current.itemIndex];
       const categoryCorrect=$('#contentGuess').value==='mimic';
       const riskCorrect=$('#riskGuess').value===current.risk;
-      const reward=(categoryCorrect?120:0)+(riskCorrect?80:0);
+      const categoryReward=categoryCorrect?CATEGORY_REWARD:0;
+      const riskReward=riskCorrect?RISK_REWARD:0;
+      const reward=categoryReward+riskReward;
 
       state.money+=reward;
       state.boxes.shift();
       saveState();
 
       $('#resultKicker').textContent='ANSWER CHECK';
-      $('#resultTitle').textContent=reward===200?'완벽한 감정':reward>0?'일부 정답':'감정 실패';
+      $('#resultTitle').textContent=categoryCorrect&&riskCorrect?'완벽한 감정':categoryCorrect||riskCorrect?'부분 감정 성공':'감정 실패';
       $('#resultDescription').textContent=`상자를 열어 ${item.name}을(를) 확인했습니다.`;
       $('#resultMoney').textContent=`+${money(reward)}`;
       $('#resultMoney').style.color=reward>0?'var(--green)':'var(--sub)';
-      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>실제 카테고리</span><strong>생물</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${categoryCorrect?'정답 +120 G':'오답 +0 G'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${riskCorrect?'정답 +80 G':'오답 +0 G'}</strong></div>`;
+      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>실제 카테고리</span><strong>생물</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${categoryCorrect?`정답 +${CATEGORY_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${riskCorrect?`정답 +${RISK_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>총 보상</span><strong>+${reward} G</strong></div>`;
       $('#resultNext').textContent=state.boxes.length?'다음 보유 상자':'적재소로 이동';
       $('#resultLayer').classList.add('show');
+      advanceInspectionGuide('open');
       updateInspectionUI();
       updateStorageUI();
     }
 
-    function buildStorageStack(){
-      clear(storageRoot);
-      const visible=state.boxes.slice(0,MAX_BOXES);
-      if(!visible.length)return;
+    let storageDropAnimation=null;
+    let storageAnimating=false;
+    let onboardingActive=false;
+    let onboardingPurchased=false;
 
+    function storagePlacement(index){
       const scale=.29;
       const chestMinY=-.965;
       const chestHeight=2.03;
@@ -311,56 +340,150 @@
       const firstY=platformTop-chestMinY*scale+.018;
       const step=chestHeight*scale+.05;
       const columnX=[-1.12,0,1.12];
+      const column=Math.floor(index/5);
+      const row=index%5;
+      return{
+        scale,
+        column,
+        row,
+        x:columnX[column],
+        y:firstY+row*step,
+        z:0,
+        rotationY:(column-1)*.025
+      };
+    }
+
+    function buildStorageStack(animatedIndex=-1){
+      clear(storageRoot);
+      storageDropAnimation=null;
+      const visible=state.boxes.slice(0,MAX_BOXES);
+      if(!visible.length)return;
 
       visible.forEach((data,index)=>{
-        const column=Math.floor(index/5);
-        const row=index%5;
+        const place=storagePlacement(index);
         const g=new THREE.Group();
         buildChest(g,data.grade);
-        g.scale.setScalar(scale);
-        g.position.set(columnX[column],firstY+row*step,0);
-        g.rotation.y=(column-1)*.025;
+        g.scale.setScalar(place.scale);
+        g.position.set(place.x,place.y,place.z);
+        g.rotation.y=place.rotationY;
+        g.userData.stackColumn=place.column;
+        g.userData.stackRow=place.row;
         storageRoot.add(g);
+
+        if(index===animatedIndex){
+          g.position.set(place.x,place.y+3.65,place.z);
+          g.rotation.set(.03,place.rotationY+.025,.02);
+          g.scale.setScalar(place.scale*.94);
+          const ghosts=[];
+          for(let ghostIndex=0;ghostIndex<1;ghostIndex++){
+            const ghost=new THREE.Group();buildChest(ghost,data.grade);ghost.scale.setScalar(place.scale*(.94-ghostIndex*.025));ghost.position.set(place.x,place.y+3.65+(ghostIndex+1)*.28,place.z);ghost.rotation.copy(g.rotation);ghost.traverse(object=>{if(object.material){const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(material=>{material.transparent=true;material.opacity=.055;material.depthWrite=false})}});storageRoot.add(ghost);ghosts.push(ghost);
+          }
+          storageDropAnimation={mesh:g,ghosts,time:0,duration:.92,startY:g.position.y,targetX:place.x,targetY:place.y,targetZ:place.z,targetScale:place.scale,targetRotationY:place.rotationY,column:place.column};
+        }
       });
     }
-    function buyBox(){
-      if(state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES)return;
-      state.money-=BOX_PRICE;state.boxes.push(createBoxData());saveState();buildStorageStack();updateStorageUI();storageRoot.scale.set(.96,.96,.96);setTimeout(()=>storageRoot.scale.set(1,1,1),150);
+
+    function finishStorageDrop(){
+      if(storageDropAnimation?.ghosts)storageDropAnimation.ghosts.forEach(ghost=>{storageRoot.remove(ghost);ghost.traverse(o=>{o.geometry?.dispose();if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose())})});
+      storageDropAnimation=null;
+      storageDropLight.intensity=0;
+      storageAnimating=false;
+      storageRoot.position.x=0;
+      storageRoot.rotation.z=0;
+      updateStorageUI(false);
+      if(onboardingActive&&onboardingPurchased){onboardingPurchased=false;setTimeout(startMoveGuide,360)}
     }
-    function updateStorageUI(){
+
+    function buyBox(){
+      if(storageAnimating||state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES)return;
+      const newIndex=state.boxes.length;
+      storageAnimating=true;
+      state.money-=BOX_PRICE;
+      state.boxes.push(createBoxData());
+      if(onboardingActive){onboardingPurchased=true;guideOverlay.classList.add('hidden')};
+      saveState();
+      updateStorageUI(false);
+      buildStorageStack(newIndex);
+    }
+    function updateStorageUI(rebuild=true){
       $('#storageMoney').textContent=money(state.money);$('#storageCount').textContent=state.boxes.length;$('#storageProgressText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#storageProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;$('#storageLabelTitle').textContent=state.boxes.length?`${state.boxes.length}개 적재 중`:'빈 적재대';$('#storageLabelSub').textContent=state.boxes.length>=MAX_BOXES?'보관 한도에 도달했습니다. 감정소에서 상자를 처리하세요.':'한 더미에 5개씩, 최대 15개까지 보관할 수 있습니다.';
-      const purchaseLocked=state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES;
+      const purchaseLocked=storageAnimating||state.money<BOX_PRICE||state.boxes.length>=MAX_BOXES;
       $('#buyBoxButton').disabled=$('#buyAnotherButton').disabled=purchaseLocked;
       $('#buyBoxButton').textContent=$('#buyAnotherButton').textContent=state.boxes.length>=MAX_BOXES?'보관 한도 15개':'상자 1개 구매';
       $('#goInspectionButton').disabled=state.boxes.length===0;
       const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]}</span></div>`).join(''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
-      buildStorageStack();
+      if(rebuild)buildStorageStack();
     }
     function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
 
     const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame');
     function showScreen(screen){[mainMenu,inspectionGame,storageGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
-    function goMain(){showScreen(mainMenu);updateGlobalUI()}
+    function updateMainFirstRun(){mainMenu.classList.toggle('first-run',!state.tutorialDone)}
+    function goMain(){showScreen(mainMenu);updateMainFirstRun();updateGlobalUI()}
     function goInspection(){showScreen(inspectionGame);beginCurrentBox();resizeInspection()}
     function goStorage(){showScreen(storageGame);updateStorageUI();resizeStorage()}
 
-    $('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=goInspection;
+    $('#startLoopButton').onclick=()=>{if(!state.tutorialDone){onboardingActive=true;guideOverlay.classList.add('hidden');goStorage();setTimeout(startStorageGuide,180)}else goStorage()};$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
-    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[]};saveState();updateStorageUI();goMain()}};
+    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false};saveState();updateStorageUI();goMain()}};
     $('#ruleButton').onclick=()=>$('#ruleOverlay').classList.remove('hidden');$('#ruleClose').onclick=()=>$('#ruleOverlay').classList.add('hidden');
     $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox();else goStorage()};
     $$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));
+    $('#contentGuess').addEventListener('change',()=>{if($('#contentGuess').value!=='unknown'&&$('#riskGuess').value!=='unknown')advanceInspectionGuide('guess')});$('#riskGuess').addEventListener('change',()=>{if($('#contentGuess').value!=='unknown'&&$('#riskGuess').value!=='unknown')advanceInspectionGuide('guess')});
 
-    createTools();updateGlobalUI();updateStorageUI();beginCurrentBox();
+    const guideOverlay=$('#guideOverlay'),guideFocus=$('#guideFocus'),guideCard=$('#guideCard'),guideKicker=$('#guideKicker'),guideTitle=$('#guideTitle'),guideText=$('#guideText'),guideTask=$('#guideTask'),guideProgress=$('#guideProgress'),guideNext=$('#guideNext'),guideSkip=$('#guideSkip');
+    let guideMode='',guideIndex=0;
+    const inspectionGuideSteps=[
+      {target:'[data-tool="weight"]',title:'첫 번째 단서를 직접 조사하세요',text:'무게 측정은 내용물의 움직임과 무게 중심을 알려줍니다.',task:'강조된 무게 측정 버튼을 눌러주세요.',action:'tool',value:'weight'},
+      {target:'#guideCluesTarget',title:'조사 기록을 확인하세요',text:'방금 얻은 단서가 조사 기록에 추가됐습니다. 모든 결과는 정확하지만 표현은 간접적입니다.',task:'기록을 읽은 뒤 아래 확인 버튼을 눌러주세요.',action:'next'},
+      {target:'[data-tool="surface"]',title:'위험도 단서를 하나 더 찾으세요',text:'표면 흔적은 상자 안쪽의 긁힘과 충격 흔적으로 위험도를 알려줍니다.',task:'강조된 표면 흔적 버튼을 눌러주세요.',action:'tool',value:'surface'},
+      {target:'#guideGuessTarget',title:'판정을 직접 입력하세요',text:'카테고리와 위험도를 선택해야 개봉 결과와 비교할 수 있습니다.',task:'카테고리와 위험도를 모두 선택해주세요.',action:'guess'},
+      {target:'#guideOpenTarget',title:'상자를 개봉해 답을 확인하세요',text:'개봉하면 상자 한 개가 소비되고 카테고리와 위험도 정답마다 150 G를 받습니다.',task:'강조된 상자 개봉 버튼을 눌러주세요.',action:'open'},
+      {target:'#resultLayer .result-card',title:'정산표를 읽어보세요',text:'카테고리 정답 150 G와 위험도 정답 150 G가 각각 계산됩니다. 둘 다 맞히면 총 300 G입니다.',task:'정산 내역을 확인하면 첫 업무가 끝납니다.',action:'complete'}
+    ];
+    function renderGuideProgress(total,current){guideProgress.innerHTML=Array.from({length:total},(_,i)=>`<span class="${i<=current?'done':''}"></span>`).join('')}
+    function positionGuide(targetSelector,title,text,kicker='FIRST SHIFT',task='강조된 부분을 확인하세요.'){
+      const target=$(targetSelector);if(!target)return;const rect=target.getBoundingClientRect(),pad=8;
+      guideFocus.style.left=`${rect.left-pad}px`;guideFocus.style.top=`${rect.top-pad}px`;guideFocus.style.width=`${rect.width+pad*2}px`;guideFocus.style.height=`${rect.height+pad*2}px`;
+      guideKicker.textContent=kicker;guideTitle.textContent=title;guideText.textContent=text;guideTask.textContent=task;
+      let left=rect.right+18,top=Math.max(18,rect.top);if(left+380>innerWidth-18)left=Math.max(18,rect.left-398);if(top+300>innerHeight-18)top=Math.max(18,innerHeight-318);guideCard.style.left=`${left}px`;guideCard.style.top=`${top}px`;
+    }
+    function startMainGuide(){if(state.tutorialDone)return;onboardingActive=true;guideMode='main';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='임무 시작을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,0);positionGuide('#startLoopButton','첫 임무를 시작하세요','처음에는 임무 시작 버튼만 사용합니다. 누르면 상자를 준비하는 적재소로 이동합니다.','FIRST SHIFT · 1 / 9','강조된 임무 시작 버튼을 눌러주세요.')}
+    function startStorageGuide(){guideMode='storage';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='구매 버튼을 직접 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,1);positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 2 / 9','강조된 상자 1개 구매 버튼을 직접 눌러주세요.')}
+    function startMoveGuide(){guideMode='move';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='감정소 이동을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,2);positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 3 / 9','강조된 감정소 이동 버튼을 직접 눌러주세요.')}
+    function startInspectionGuide(){guideMode='inspection';guideIndex=0;guideOverlay.classList.remove('hidden');updateInspectionGuide()}
+    function updateInspectionGuide(){const step=inspectionGuideSteps[guideIndex];guideNext.disabled=step.action!=='next'&&step.action!=='complete';guideNext.textContent=step.action==='next'?'확인했어요':step.action==='complete'?'튜토리얼 완료':'직접 조작해주세요';renderGuideProgress(9,guideIndex+3);positionGuide(step.target,step.title,step.text,`FIRST SHIFT · ${guideIndex+4} / 9`,step.task)}
+    function advanceInspectionGuide(expectedAction,value=''){
+      if(!onboardingActive||guideMode!=='inspection')return;
+      const step=inspectionGuideSteps[guideIndex];if(!step||step.action!==expectedAction)return;if(value&&step.value!==value)return;
+      if(guideIndex<inspectionGuideSteps.length-1){guideIndex++;setTimeout(updateInspectionGuide,220)}
+    }
+    function closeGuide(complete=false){guideOverlay.classList.add('hidden');if(complete){onboardingActive=false;state.tutorialDone=true;saveState();updateMainFirstRun()}}
+    guideNext.onclick=()=>{if(guideMode==='inspection'){const step=inspectionGuideSteps[guideIndex];if(step.action==='next')advanceInspectionGuide('next');else if(step.action==='complete')closeGuide(true)}};
+    guideSkip.onclick=()=>closeGuide(true);
+
+    createTools();updateGlobalUI();updateStorageUI();beginCurrentBox();updateMainFirstRun();if(!state.tutorialDone)setTimeout(startMainGuide,220);
 
     function resizeRenderer(pack,element){const w=element.clientWidth,h=element.clientHeight;if(w<=0||h<=0)return;pack.renderer.setSize(w,h,false);pack.camera.aspect=w/h;pack.camera.updateProjectionMatrix()}
     function resizeInspection(){resizeRenderer(inspectionPack,$('#inspectionScene'))}function resizeStorage(){resizeRenderer(storagePack,$('#storageScene'))}
-    addEventListener('resize',()=>{resizeInspection();resizeStorage()});
+    addEventListener('resize',()=>{resizeInspection();resizeStorage();if(!guideOverlay.classList.contains('hidden')){if(guideMode==='main')startMainGuide();else if(guideMode==='storage')positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 2 / 9','강조된 상자 1개 구매 버튼을 직접 눌러주세요.');else if(guideMode==='move')positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 3 / 9','강조된 감정소 이동 버튼을 직접 눌러주세요.');else if(guideMode==='inspection')updateInspectionGuide()}});
     const clock=new THREE.Clock();
     function animate(){requestAnimationFrame(animate);const d=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
       if(current&&insMode==='idle')inspectionRoot.position.y=.02+Math.sin(t*1.2)*.018;else if(insMode!=='idle'){insTime+=d;const p=Math.min(insTime/.75,1);if(insMode==='lift')inspectionRoot.position.y=.02+Math.sin(p*Math.PI)*.26;else inspectionRoot.rotation.z=Math.sin(p*Math.PI*6)*Math.sin(p*Math.PI)*.035;if(p>=1){insMode='idle';inspectionRoot.position.set(0,.02,0);inspectionRoot.rotation.z=0}}
-      storageRoot.position.y=Math.sin(t*.9)*.008;
+      if(storageDropAnimation){
+        const a=storageDropAnimation;a.time+=d;const p=Math.min(a.time/a.duration,1);const fall=Math.min(p/.72,1);const ease=fall<1?fall*fall:1;const settle=p>.72?(p-.72)/.28:0;
+        a.mesh.position.x=a.targetX;a.mesh.position.z=a.targetZ;
+        if(p<.72)a.mesh.position.y=THREE.MathUtils.lerp(a.startY,a.targetY,ease);
+        else{const bounce=Math.abs(Math.sin(settle*Math.PI*3))*Math.pow(1-settle,2)*.17;a.mesh.position.y=a.targetY+bounce}
+        const speedBlur=Math.max(0,1-Math.abs(fall-.62)*2.4);
+        a.ghosts.forEach((ghost,index)=>{ghost.position.x=a.targetX;ghost.position.z=a.targetZ;ghost.position.y=a.mesh.position.y+(index+1)*(.18+.09*speedBlur);ghost.rotation.copy(a.mesh.rotation);ghost.visible=p<.82;ghost.traverse(object=>{if(object.material){(Array.isArray(object.material)?object.material:[object.material]).forEach(material=>material.opacity=.045*speedBlur)}})});
+        const squash=p>.69&&p<.92?Math.sin((p-.69)/.23*Math.PI):0;const base=THREE.MathUtils.lerp(a.targetScale*.94,a.targetScale,Math.min(p/.72,1));a.mesh.scale.set(base*(1+squash*.07),base*(1-squash*.13),base*(1+squash*.07));a.mesh.rotation.x=(1-p)*.03;a.mesh.rotation.y=THREE.MathUtils.lerp(a.targetRotationY+.025,a.targetRotationY,p);a.mesh.rotation.z=Math.sin(p*Math.PI*2)*(1-p)*.025;
+        const impact=p>.69?Math.sin(Math.min((p-.69)/.31,1)*Math.PI):0;storageRoot.position.y=-impact*.035;storageRoot.rotation.z=(a.column-1)*impact*.009;
+        storageDropLight.position.set(a.targetX,a.mesh.position.y+1.1,2.25);storageDropLight.intensity=p<.68?speedBlur*1.7:impact*4.2;
+        if(p>.7&&p<.76&&!a.flashed){a.flashed=true;const flash=$('#dropFlash');const rect=$('#storageScene').getBoundingClientRect();flash.style.left=`${(a.targetX/4.8+.5)*100}%`;flash.style.top=`${72-a.targetY*5}%`;flash.classList.remove('show');void flash.offsetWidth;flash.classList.add('show')}
+        if(p>=1){a.mesh.position.set(a.targetX,a.targetY,a.targetZ);a.mesh.scale.setScalar(a.targetScale);a.mesh.rotation.set(0,a.targetRotationY,0);storageRoot.position.y=0;storageRoot.rotation.z=0;finishStorageDrop()}
+      }else{storageRoot.position.y=Math.sin(t*.9)*.008;storageDropLight.intensity=0}
       inspectionPack.renderer.render(inspectionPack.scene,inspectionPack.camera);storagePack.renderer.render(storagePack.scene,storagePack.camera)
     }
     resizeInspection();resizeStorage();animate();
