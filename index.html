@@ -71,6 +71,21 @@
     .mode-button{min-height:112px}.mode-number{background:#f6f4ee}
     .main-menu.first-run .menu-stats,.main-menu.first-run .location-caption,.main-menu.first-run .mode-button,.main-menu.first-run .reset-save{display:none}.main-menu.first-run .menu-options{justify-content:center}.main-menu.first-run .start-loop-button{min-height:82px;font-size:17px}
 
+    .intake-desk{display:none;position:relative;width:100%;height:100%;align-items:center;justify-content:center;padding:34px;background:#fff;overflow:hidden}
+    .intake-desk::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(255,255,255,0) 0 31%,rgba(37,34,29,.035) 74%,rgba(37,34,29,.07) 100%);pointer-events:none}
+    .paper-field{position:absolute;inset:-8%;pointer-events:none;overflow:hidden}
+    .loose-paper{position:absolute;width:250px;height:340px;border:1px solid #d2cec5;background:linear-gradient(180deg,#fbfaf6,#f0eee7);box-shadow:0 9px 24px rgba(31,29,25,.12)}
+    .loose-paper::before{content:"";position:absolute;left:24px;right:24px;top:42px;height:1px;background:#bdb8ae;box-shadow:0 18px 0 #d5d1c8,0 36px 0 #d5d1c8,0 54px 0 #d5d1c8,0 90px 0 #d5d1c8,0 108px 0 #d5d1c8,0 126px 0 #d5d1c8}
+    .loose-paper::after{content:"FORM";position:absolute;top:17px;left:24px;color:#aaa49a;font:800 8px/1 sans-serif;letter-spacing:.18em}
+    .loose-paper:nth-child(1){left:-5%;top:-13%;transform:rotate(-18deg)}.loose-paper:nth-child(2){left:7%;top:-21%;transform:rotate(8deg)}.loose-paper:nth-child(3){left:20%;top:-18%;transform:rotate(-5deg)}.loose-paper:nth-child(4){left:34%;top:-26%;transform:rotate(13deg)}.loose-paper:nth-child(5){left:51%;top:-22%;transform:rotate(-9deg)}.loose-paper:nth-child(6){left:68%;top:-19%;transform:rotate(16deg)}.loose-paper:nth-child(7){right:-5%;top:-12%;transform:rotate(-12deg)}
+    .loose-paper:nth-child(8){left:-8%;top:25%;transform:rotate(12deg)}.loose-paper:nth-child(9){left:2%;top:42%;transform:rotate(-22deg)}.loose-paper:nth-child(10){left:13%;top:58%;transform:rotate(7deg)}.loose-paper:nth-child(11){right:12%;top:55%;transform:rotate(-8deg)}.loose-paper:nth-child(12){right:1%;top:39%;transform:rotate(19deg)}.loose-paper:nth-child(13){right:-8%;top:20%;transform:rotate(-15deg)}
+    .loose-paper:nth-child(14){left:-3%;bottom:-20%;transform:rotate(-7deg)}.loose-paper:nth-child(15){left:12%;bottom:-28%;transform:rotate(15deg)}.loose-paper:nth-child(16){left:27%;bottom:-22%;transform:rotate(-12deg)}.loose-paper:nth-child(17){left:46%;bottom:-30%;transform:rotate(6deg)}.loose-paper:nth-child(18){left:64%;bottom:-24%;transform:rotate(-17deg)}.loose-paper:nth-child(19){right:-1%;bottom:-18%;transform:rotate(11deg)}
+    .loose-paper:nth-child(20){left:26%;top:12%;transform:rotate(-24deg)}.loose-paper:nth-child(21){right:26%;top:10%;transform:rotate(22deg)}.loose-paper:nth-child(22){left:18%;top:27%;transform:rotate(17deg)}.loose-paper:nth-child(23){right:17%;top:29%;transform:rotate(-18deg)}.loose-paper:nth-child(24){left:41%;top:65%;transform:rotate(9deg)}
+    .intake-document{position:relative;z-index:4;width:min(620px,calc(100% - 40px));min-height:555px;padding:42px 48px 36px;border:1px solid #bdb8ae;background:linear-gradient(180deg,#fffefa,#f4f1e8);box-shadow:0 34px 90px rgba(27,25,22,.23);transform:rotate(-.35deg)}
+    .intake-document::before,.intake-document::after{content:"";position:absolute;z-index:-1;inset:0;border:1px solid #d1ccc1;background:#f0ede5}.intake-document::before{transform:rotate(2.4deg) translate(15px,10px)}.intake-document::after{transform:rotate(-2deg) translate(-13px,15px)}
+    .doc-top{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:2px solid #2d2b27}.doc-office{font-size:10px;font-weight:950;letter-spacing:.18em}.doc-number{color:#7c766d;font-size:9px;font-weight:850}.doc-title{margin-top:30px;font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1.05;letter-spacing:-.04em;text-align:center}.doc-subtitle{margin-top:9px;color:#736e65;font-size:11px;text-align:center;letter-spacing:.1em}.doc-copy{margin-top:31px;color:#47443e;font-size:12px;line-height:1.95}.doc-clauses{display:grid;gap:9px;margin-top:23px;padding:16px 18px;border-top:1px solid #c8c1b5;border-bottom:1px solid #c8c1b5}.doc-clause{display:grid;grid-template-columns:26px 1fr;gap:9px;color:#575249;font-size:11px;line-height:1.6}.doc-clause strong{font-family:Georgia,serif;font-size:13px}
+    .signature-area{margin-top:27px}.signature-label{display:flex;justify-content:space-between;color:#716b62;font-size:9px;font-weight:900;letter-spacing:.13em}.signature-pad-wrap{position:relative;height:92px;margin-top:8px;border-bottom:1px solid #35322e;background:rgba(255,255,255,.28);cursor:crosshair;touch-action:none}.signature-pad{display:block;width:100%;height:100%;touch-action:none}.signature-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#b8b1a5;font-size:11px;font-weight:700;letter-spacing:.05em;pointer-events:none;transition:.18s ease}.signature-pad-wrap.signed .signature-placeholder{opacity:0}.signature-hint{margin-top:8px;color:#8a847a;font-size:9px;text-align:center}.signature-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;overflow:hidden}.signature-progress::after{content:"";display:block;width:0;height:100%;background:#292927;transition:width .6s ease}.signature-pad-wrap.ready .signature-progress::after{width:100%}.doc-stamp{position:absolute;right:35px;bottom:84px;padding:9px 12px;border:2px solid rgba(137,55,45,.42);border-radius:4px;color:rgba(137,55,45,.55);font-size:11px;font-weight:950;letter-spacing:.14em;transform:rotate(-9deg);pointer-events:none}
+    .main-menu.first-run .menu-shell{display:none}.main-menu.first-run .intake-desk{display:flex}
     .guide-overlay{position:fixed;z-index:800;inset:0;pointer-events:none}.guide-focus{position:fixed;z-index:2;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(15,15,14,.76),0 0 0 7px rgba(255,255,255,.12),0 16px 45px rgba(0,0,0,.28);transition:.28s ease;animation:guidePulse 1.4s ease-in-out infinite}.guide-card{position:fixed;z-index:3;width:min(380px,calc(100vw - 28px));padding:22px;border:1px solid #262522;background:#faf9f5;box-shadow:0 24px 70px rgba(0,0,0,.28);pointer-events:auto}.guide-kicker{color:#8d745d;font-size:9px;font-weight:900;letter-spacing:.16em}.guide-title{margin-top:6px;font-size:21px;font-weight:950;letter-spacing:-.04em}.guide-text{margin-top:8px;color:var(--sub);font-size:12px;line-height:1.72}.guide-task{margin-top:13px;padding:11px 12px;border-left:3px solid #292927;background:#ece9e1;color:#373530;font-size:11px;font-weight:850;line-height:1.55}.guide-progress{display:flex;gap:5px;margin-top:15px}.guide-progress span{height:5px;flex:1;border-radius:999px;background:#d8d4cb}.guide-progress span.done{background:#292927}.guide-actions{display:flex;gap:8px;margin-top:17px}.guide-skip,.guide-next{min-height:42px;padding:0 14px;border:1px solid var(--line-dark);font-size:10px;font-weight:900}.guide-skip{color:var(--sub);background:transparent}.guide-next{flex:1;border:0;color:#fff;background:#292927}.guide-next:disabled{color:#918e87;background:#d6d2ca;cursor:default}@keyframes guidePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18)}}
     .drop-flash{position:absolute;z-index:7;left:50%;top:50%;width:180px;height:64px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,230,168,.7),rgba(255,230,168,.12) 46%,transparent 72%);filter:blur(8px);opacity:0;transform:translate(-50%,-50%);pointer-events:none;mix-blend-mode:screen}.drop-flash.show{animation:dropFlash .55s ease-out}
     @keyframes dropFlash{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}35%{opacity:.85}100%{opacity:0;transform:translate(-50%,-50%) scale(1.45)}}
@@ -81,6 +96,35 @@
 </head>
 <body>
   <section id="mainMenu" class="screen main-menu">
+    <div id="intakeDesk" class="intake-desk">
+      <div class="paper-field" aria-hidden="true">
+        <i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i>
+        <i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i>
+        <i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i>
+        <i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i>
+      </div>
+      <article class="intake-document">
+        <div class="doc-top"><span class="doc-office">BOX APPRAISAL OFFICE</span><span class="doc-number">FORM A-01 · 신규 작업자 등록</span></div>
+        <h1 class="doc-title">업무 인수 확인서</h1>
+        <p class="doc-subtitle">WAREHOUSE &amp; APPRAISAL CONNECTED WORK ORDER</p>
+        <p class="doc-copy">본인은 적재소에서 미감정 상자를 구매하고, 감정소에서 조사 결과를 바탕으로 내용물의 카테고리와 위험도를 판정한 뒤 개봉하는 업무를 인수합니다.</p>
+        <div class="doc-clauses">
+          <div class="doc-clause"><strong>01</strong><span>상자는 적재소에서 한 개씩 구매하며 최대 15개까지 보관합니다.</span></div>
+          <div class="doc-clause"><strong>02</strong><span>보유 상자는 감정소에서 개봉할 때마다 한 개씩 차감됩니다.</span></div>
+          <div class="doc-clause"><strong>03</strong><span>판정 보상으로 얻은 금액은 다음 상자 구매에 다시 사용할 수 있습니다.</span></div>
+        </div>
+        <div class="signature-area">
+          <div class="signature-label"><span>작업자 서명</span><span>DRAW SIGNATURE</span></div>
+          <div id="signaturePadWrap" class="signature-pad-wrap">
+            <canvas id="workerSignature" class="signature-pad" aria-label="마우스로 서명하는 영역"></canvas>
+            <div class="signature-placeholder">마우스로 이곳에 서명하세요</div>
+            <div class="signature-progress"></div>
+          </div>
+          <p class="signature-hint">서명을 마치고 마우스를 떼면 적재소로 이동합니다.</p>
+        </div>
+        <div class="doc-stamp">SIGN HERE</div>
+      </article>
+    </div>
     <div class="menu-shell">
       <div class="menu-intro">
         <div>
@@ -423,7 +467,34 @@
     function goInspection(){showScreen(inspectionGame);beginCurrentBox();resizeInspection()}
     function goStorage(){showScreen(storageGame);updateStorageUI();resizeStorage()}
 
-    $('#startLoopButton').onclick=()=>{if(!state.tutorialDone){onboardingActive=true;guideOverlay.classList.add('hidden');goStorage();setTimeout(startStorageGuide,180)}else goStorage()};$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
+    const workerSignature=$('#workerSignature'),signaturePadWrap=$('#signaturePadWrap');
+    const signatureContext=workerSignature.getContext('2d');
+    let signatureDrawing=false,signatureLength=0,signatureLast=null,signatureAccepted=false,signatureMoveTimer=null;
+    function resizeSignaturePad(){
+      const rect=signaturePadWrap.getBoundingClientRect();if(!rect.width||!rect.height)return;
+      const ratio=Math.min(devicePixelRatio||1,2),snapshot=document.createElement('canvas');
+      snapshot.width=workerSignature.width;snapshot.height=workerSignature.height;snapshot.getContext('2d').drawImage(workerSignature,0,0);
+      workerSignature.width=Math.round(rect.width*ratio);workerSignature.height=Math.round(rect.height*ratio);
+      signatureContext.setTransform(ratio,0,0,ratio,0,0);signatureContext.lineCap='round';signatureContext.lineJoin='round';signatureContext.strokeStyle='#22201d';signatureContext.lineWidth=2.4;
+      if(snapshot.width&&snapshot.height)signatureContext.drawImage(snapshot,0,0,snapshot.width,snapshot.height,0,0,rect.width,rect.height);
+    }
+    function signaturePoint(event){const rect=workerSignature.getBoundingClientRect();return{x:event.clientX-rect.left,y:event.clientY-rect.top}}
+    function finishSignature(){
+      signatureDrawing=false;signatureLast=null;
+      if(signatureLength<42||signatureAccepted)return;
+      signatureAccepted=true;signaturePadWrap.classList.add('ready');
+      clearTimeout(signatureMoveTimer);signatureMoveTimer=setTimeout(()=>{onboardingActive=true;goStorage();setTimeout(startStorageGuide,220)},700);
+    }
+    workerSignature.addEventListener('pointerdown',event=>{
+      if(signatureAccepted)return;signatureDrawing=true;signatureLast=signaturePoint(event);workerSignature.setPointerCapture(event.pointerId);signaturePadWrap.classList.add('signed');
+      signatureContext.beginPath();signatureContext.moveTo(signatureLast.x,signatureLast.y);event.preventDefault();
+    });
+    workerSignature.addEventListener('pointermove',event=>{
+      if(!signatureDrawing||signatureAccepted)return;const point=signaturePoint(event),dx=point.x-signatureLast.x,dy=point.y-signatureLast.y;
+      signatureLength+=Math.hypot(dx,dy);signatureContext.lineTo(point.x,point.y);signatureContext.stroke();signatureLast=point;event.preventDefault();
+    });
+    workerSignature.addEventListener('pointerup',finishSignature);workerSignature.addEventListener('pointercancel',finishSignature);workerSignature.addEventListener('pointerleave',event=>{if(signatureDrawing&&event.buttons===0)finishSignature()});
+    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
     $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false};saveState();updateStorageUI();goMain()}};
@@ -449,11 +520,11 @@
       guideKicker.textContent=kicker;guideTitle.textContent=title;guideText.textContent=text;guideTask.textContent=task;
       let left=rect.right+18,top=Math.max(18,rect.top);if(left+380>innerWidth-18)left=Math.max(18,rect.left-398);if(top+300>innerHeight-18)top=Math.max(18,innerHeight-318);guideCard.style.left=`${left}px`;guideCard.style.top=`${top}px`;
     }
-    function startMainGuide(){if(state.tutorialDone)return;onboardingActive=true;guideMode='main';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='임무 시작을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,0);positionGuide('#startLoopButton','첫 임무를 시작하세요','처음에는 임무 시작 버튼만 사용합니다. 누르면 상자를 준비하는 적재소로 이동합니다.','FIRST SHIFT · 1 / 9','강조된 임무 시작 버튼을 눌러주세요.')}
-    function startStorageGuide(){guideMode='storage';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='구매 버튼을 직접 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,1);positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 2 / 9','강조된 상자 1개 구매 버튼을 직접 눌러주세요.')}
-    function startMoveGuide(){guideMode='move';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='감정소 이동을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,2);positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 3 / 9','강조된 감정소 이동 버튼을 직접 눌러주세요.')}
+    function startMainGuide(){if(state.tutorialDone)return;onboardingActive=true;guideMode='main';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='서명 후 버튼을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,0);positionGuide('#workerSignature','업무 인수서에 서명하세요','쌓여 있는 서류 중 마지막 인수 확인서입니다. 빈칸에 이름을 입력한 뒤 업무 인수 버튼을 눌러주세요.','FIRST SHIFT · 1 / 9','서명란에 이름을 입력하고 아래 버튼을 눌러주세요.')}
+    function startStorageGuide(){guideMode='storage';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='구매 버튼을 직접 눌러주세요';guideNext.disabled=true;renderGuideProgress(8,0);positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 1 / 8','강조된 상자 1개 구매 버튼을 직접 눌러주세요.')}
+    function startMoveGuide(){guideMode='move';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='감정소 이동을 눌러주세요';guideNext.disabled=true;renderGuideProgress(8,1);positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 2 / 8','강조된 감정소 이동 버튼을 직접 눌러주세요.')}
     function startInspectionGuide(){guideMode='inspection';guideIndex=0;guideOverlay.classList.remove('hidden');updateInspectionGuide()}
-    function updateInspectionGuide(){const step=inspectionGuideSteps[guideIndex];guideNext.disabled=step.action!=='next'&&step.action!=='complete';guideNext.textContent=step.action==='next'?'확인했어요':step.action==='complete'?'튜토리얼 완료':'직접 조작해주세요';renderGuideProgress(9,guideIndex+3);positionGuide(step.target,step.title,step.text,`FIRST SHIFT · ${guideIndex+4} / 9`,step.task)}
+    function updateInspectionGuide(){const step=inspectionGuideSteps[guideIndex];guideNext.disabled=step.action!=='next'&&step.action!=='complete';guideNext.textContent=step.action==='next'?'확인했어요':step.action==='complete'?'튜토리얼 완료':'직접 조작해주세요';renderGuideProgress(8,guideIndex+2);positionGuide(step.target,step.title,step.text,`FIRST SHIFT · ${guideIndex+3} / 8`,step.task)}
     function advanceInspectionGuide(expectedAction,value=''){
       if(!onboardingActive||guideMode!=='inspection')return;
       const step=inspectionGuideSteps[guideIndex];if(!step||step.action!==expectedAction)return;if(value&&step.value!==value)return;
@@ -463,11 +534,11 @@
     guideNext.onclick=()=>{if(guideMode==='inspection'){const step=inspectionGuideSteps[guideIndex];if(step.action==='next')advanceInspectionGuide('next');else if(step.action==='complete')closeGuide(true)}};
     guideSkip.onclick=()=>closeGuide(true);
 
-    createTools();updateGlobalUI();updateStorageUI();beginCurrentBox();updateMainFirstRun();if(!state.tutorialDone)setTimeout(startMainGuide,220);
+    createTools();updateGlobalUI();updateStorageUI();beginCurrentBox();updateMainFirstRun();setTimeout(resizeSignaturePad,80);
 
     function resizeRenderer(pack,element){const w=element.clientWidth,h=element.clientHeight;if(w<=0||h<=0)return;pack.renderer.setSize(w,h,false);pack.camera.aspect=w/h;pack.camera.updateProjectionMatrix()}
     function resizeInspection(){resizeRenderer(inspectionPack,$('#inspectionScene'))}function resizeStorage(){resizeRenderer(storagePack,$('#storageScene'))}
-    addEventListener('resize',()=>{resizeInspection();resizeStorage();if(!guideOverlay.classList.contains('hidden')){if(guideMode==='main')startMainGuide();else if(guideMode==='storage')positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 2 / 9','강조된 상자 1개 구매 버튼을 직접 눌러주세요.');else if(guideMode==='move')positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 3 / 9','강조된 감정소 이동 버튼을 직접 눌러주세요.');else if(guideMode==='inspection')updateInspectionGuide()}});
+    addEventListener('resize',()=>{resizeInspection();resizeStorage();resizeSignaturePad();if(!guideOverlay.classList.contains('hidden')){if(guideMode==='storage')positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 1 / 8','강조된 상자 1개 구매 버튼을 직접 눌러주세요.');else if(guideMode==='move')positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 2 / 8','강조된 감정소 이동 버튼을 직접 눌러주세요.');else if(guideMode==='inspection')updateInspectionGuide()}});
     const clock=new THREE.Clock();
     function animate(){requestAnimationFrame(animate);const d=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
       if(current&&insMode==='idle')inspectionRoot.position.y=.02+Math.sin(t*1.2)*.018;else if(insMode!=='idle'){insTime+=d;const p=Math.min(insTime/.75,1);if(insMode==='lift')inspectionRoot.position.y=.02+Math.sin(p*Math.PI)*.26;else inspectionRoot.rotation.z=Math.sin(p*Math.PI*6)*Math.sin(p*Math.PI)*.035;if(p>=1){insMode='idle';inspectionRoot.position.set(0,.02,0);inspectionRoot.rotation.z=0}}
