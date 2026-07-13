@@ -52,6 +52,7 @@
         <div class="menu-stats">
           <div class="menu-stat"><span>MONEY</span><strong id="menuMoney">1,000 G</strong></div>
           <div class="menu-stat"><span>OWNED BOXES</span><strong id="menuBoxes">0개</strong></div>
+          <div class="menu-stat menu-stat-wide"><span>COLLECTION</span><strong id="menuCollection">0 / 60</strong></div>
         </div>
         <button id="startLoopButton" class="start-loop-button" type="button"><span>임무 시작</span><span>→</span></button>
         <p class="location-caption">DIRECT ACCESS</p>
@@ -65,6 +66,11 @@
           <span><span class="mode-title">상자 적재소</span><span class="mode-description">돈으로 상자를 구매해 보관합니다. 한 더미에 5개씩, 최대 15개까지 쌓이며 감정소에서 사용됩니다.</span></span>
           <span class="mode-arrow">→</span>
         </button>
+        <button id="modeCollectionButton" class="mode-button collection-mode-button" type="button">
+          <span class="mode-number">3</span>
+          <span><span class="mode-title">상자 도감</span><span class="mode-description">개봉해서 발견한 물품과 최고 별 등급을 카테고리별로 확인합니다.</span></span>
+          <span class="mode-arrow">→</span>
+        </button>
         <button id="resetSaveButton" class="reset-save" type="button">저장 데이터 초기화</button>
       </div>
     </div>
@@ -74,7 +80,7 @@
     <header class="topbar">
       <div class="brand"><div class="brand-mark">鑑</div><div><h1 class="brand-title">상자 감정소</h1><p class="brand-sub">적재소에서 가져온 상자를 감정합니다.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="inspectionInventoryText">보유 상자 0개</span><span>상자당 조사 4회</span></div><div class="progress-track"><div id="inventoryProgress" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><button id="inspectionCollection" class="small-button" type="button">도감</button><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
     </header>
 
     <section class="inspection-layout">
@@ -107,7 +113,7 @@
     <header class="topbar">
       <div class="brand"><div class="brand-mark">積</div><div><h1 class="brand-title">상자 적재소</h1><p class="brand-sub">상자를 구매해 감정소에 공급합니다.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="storageProgressText">보유 상자 0개</span><span>구매 비용 200 G</span></div><div class="progress-track"><div id="storageProgress" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="storageMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="storageCount" class="stat-value">0</div></div><button id="storageHome" class="home-button" type="button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="storageMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="storageCount" class="stat-value">0</div></div><button id="storageCollection" class="small-button" type="button">도감</button><button id="storageHome" class="home-button" type="button">←</button></div>
     </header>
 
     <section class="storage-layout">
@@ -126,6 +132,28 @@
       <div class="storage-actions"><button id="buyAnotherButton" class="secondary-big" type="button">상자 1개 구매</button><button id="goInspectionButton" class="primary-big" type="button">감정소로 이동</button></div>
       <button id="clearBoxesButton" class="storage-reset" type="button">보유 상자 비우기</button>
     </footer>
+  </main>
+
+
+  <main id="collectionGame" class="screen collection-screen hidden">
+    <header class="topbar collection-topbar">
+      <div class="brand"><div class="brand-mark">録</div><div><h1 class="brand-title">상자 도감</h1><p class="brand-sub">개봉한 물품과 최고 별 등급을 기록합니다.</p></div></div>
+      <div class="progress-box"><div class="progress-head"><span id="collectionProgressText">발견 0 / 60</span><span>별 등급 1–5</span></div><div class="progress-track"><div id="collectionProgress" class="progress-fill"></div></div></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">DISCOVERED</div><div id="collectionCount" class="stat-value">0 / 60</div></div><button id="collectionHome" class="home-button" type="button">←</button></div>
+    </header>
+    <section class="collection-body">
+      <aside class="collection-sidebar">
+        <p class="section-label">CATALOG</p>
+        <h2 class="section-title">분류</h2>
+        <p class="section-description">발견한 물품만 이름과 설명이 공개됩니다. 같은 물품을 더 높은 별 상자에서 발견하면 최고 기록이 갱신됩니다.</p>
+        <div id="collectionTabs" class="collection-tabs"></div>
+        <div class="collection-legend"><span>★☆☆☆☆</span><small>나무 상자</small><span>★★☆☆☆</span><small>은 상자</small><span>★★★☆☆</span><small>금 상자</small><span>★★★★☆</span><small>다이아 상자</small><span>★★★★★</span><small>봉인된 상자</small></div>
+      </aside>
+      <section class="collection-content">
+        <div class="collection-heading"><div><p id="collectionCategoryLabel" class="section-label">CREATURE</p><h2 id="collectionCategoryTitle">생물 도감</h2></div><p id="collectionCategoryCount">0 / 15 발견</p></div>
+        <div id="collectionGrid" class="collection-grid"></div>
+      </section>
+    </section>
   </main>
 
   <div id="guideOverlay" class="guide-overlay hidden"><div id="guideFocus" class="guide-focus"></div><article id="guideCard" class="guide-card"><p id="guideKicker" class="guide-kicker">FIRST SHIFT</p><h2 id="guideTitle" class="guide-title">상자를 먼저 구매하세요</h2><p id="guideText" class="guide-text"></p><div id="guideTask" class="guide-task">강조된 버튼을 직접 눌러주세요.</div><div id="guideProgress" class="guide-progress"></div><div class="guide-actions"><button id="guideSkip" class="guide-skip" type="button">건너뛰기</button><button id="guideNext" class="guide-next" type="button">다음</button></div></article></div>

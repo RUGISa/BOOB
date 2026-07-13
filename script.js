@@ -6,6 +6,8 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     const CATEGORY_REWARD=150;
     const RISK_REWARD=150;
     const MAX_BOXES=15;
+    const CATEGORY_ORDER=['mimic','treasure','explosive','junk'];
+    const CATEGORY_CODE={mimic:'CREATURE',treasure:'TREASURE',explosive:'EXPLOSIVE',junk:'JUNK'};
     const riskLabel={safe:'안전',warning:'주의',danger:'위험'};
     const chestNames=['나무 상자','은 상자','금 상자','다이아 상자','봉인된 상자'];
     const chestValues=[450,518,585,653,720];
@@ -111,9 +113,11 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     function loadState(){
       try{
         const raw=JSON.parse(localStorage.getItem(STORE_KEY));
-        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes))return{...raw,tutorialDone:Boolean(raw.tutorialDone)};
+        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes)){
+          return{...raw,tutorialDone:Boolean(raw.tutorialDone),collection:raw.collection&&typeof raw.collection==='object'?raw.collection:{}};
+        }
       }catch(error){console.warn(error)}
-      return{money:1000,boxes:[],tutorialDone:false};
+      return{money:1000,boxes:[],tutorialDone:false,collection:{}};
     }
     function saveState(){localStorage.setItem(STORE_KEY,JSON.stringify(state));updateGlobalUI()}
     const money=v=>`${Math.round(v).toLocaleString('ko-KR')} G`;
@@ -121,6 +125,15 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     const rint=(a,b)=>Math.floor(rand(a,b+1));
     const pick=a=>a[Math.floor(Math.random()*a.length)];
     function weighted(entries){let total=entries.reduce((s,e)=>s+e.weight,0),roll=Math.random()*total;for(const e of entries){roll-=e.weight;if(roll<=0)return e.value}return entries.at(-1).value}
+    function boxStars(boxData){return Math.max(1,Math.min(5,(Number(boxData?.grade)||0)+1))}
+    function starsHTML(value){const stars=Math.max(0,Math.min(5,Number(value)||0));return `<span class="star-rating" aria-label="${stars}성">${Array.from({length:5},(_,i)=>`<span class="${i<stars?'':'empty'}">★</span>`).join('')}</span>`}
+    function collectionKey(content,itemIndex){return `${content}:${itemIndex}`}
+    function discoveredCount(){return Object.keys(state.collection||{}).filter(key=>state.collection[key]>0).length}
+    function registerDiscovery(boxData){
+      if(!state.collection||typeof state.collection!=='object')state.collection={};
+      const key=collectionKey(boxData.content,boxData.itemIndex),stars=boxStars(boxData);
+      state.collection[key]=Math.max(Number(state.collection[key])||0,stars);
+    }
 
     function createBoxData(){
       const content=pick(Object.keys(itemCatalog));
@@ -193,7 +206,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     }
     function updateInspectionUI(){
       $('#inspectionMoney').textContent=money(state.money);$('#inspectionInventoryText').textContent=`보유 상자 ${state.boxes.length} / ${MAX_BOXES}개`;$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#inventoryProgress').style.width=`${state.boxes.length/MAX_BOXES*100}%`;
-      if(current){$('#caseNumber').textContent='STORED BOX';$('#caseName').textContent=chestNames[current.grade];$('#caseSub').textContent=`${current.id.split('-').slice(0,2).join('-')} · 미감정 상태`}else{$('#caseName').textContent='상자 없음';$('#caseSub').textContent='적재소에서 상자를 구매하세요'}
+      if(current){$('#caseNumber').textContent='STORED BOX';$('#caseName').textContent=chestNames[current.grade];$('#caseSub').innerHTML=`${current.id.split('-').slice(0,2).join('-')} · 미감정 상태 <span class="case-stars">${starsHTML(boxStars(current))}</span>`}else{$('#caseName').textContent='상자 없음';$('#caseSub').textContent='적재소에서 상자를 구매하세요'}
       $$('#inspectionCount .inspection-dot').forEach((d,i)=>d.className=`inspection-dot ${i<used?'used':'available'}`);
       $('#clueList').innerHTML=results.length?results.map((r,i)=>`<article class="clue-item"><div class="clue-head"><span class="clue-name">${i+1}. ${r.name}</span><span class="clue-confidence">정확</span></div><p class="clue-result">${r.text}</p></article>`).join(''):'<div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div>';
       $$('#toolList .tool-button').forEach(b=>b.disabled=!current||resolved||used>=4||results.some(r=>r.id===b.dataset.tool));
@@ -211,6 +224,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       const reward=categoryReward+riskReward;
 
       state.money+=reward;
+      registerDiscovery(current);
       state.boxes.shift();
       saveState();
 
@@ -219,7 +233,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       $('#resultDescription').textContent=`상자를 열어 ${item.name}을(를) 확인했습니다.`;
       $('#resultMoney').textContent=`+${money(reward)}`;
       $('#resultMoney').style.color=reward>0?'var(--green)':'var(--sub)';
-      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>실제 카테고리</span><strong>${category.label}</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${categoryCorrect?`정답 +${CATEGORY_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${riskCorrect?`정답 +${RISK_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>총 보상</span><strong>+${reward} G</strong></div>`;
+      $('#resultDetails').innerHTML=`<div class="result-detail-row"><span>실제 물품</span><strong>${item.name}</strong></div><div class="result-detail-row"><span>상자 별 등급</span><strong class="result-stars">${starsHTML(boxStars(current))}</strong></div><div class="result-detail-row"><span>설명</span><strong>${item.description}</strong></div><div class="result-detail-row"><span>실제 카테고리</span><strong>${category.label}</strong></div><div class="result-detail-row"><span>실제 위험도</span><strong>${riskLabel[current.risk]}</strong></div><div class="result-detail-row"><span>카테고리 추리</span><strong>${categoryCorrect?`정답 +${CATEGORY_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>위험도 추리</span><strong>${riskCorrect?`정답 +${RISK_REWARD} G`:'오답 +0 G'}</strong></div><div class="result-detail-row"><span>총 보상</span><strong>+${reward} G</strong></div>`;
       $('#resultNext').textContent=state.boxes.length?'다음 보유 상자':'적재소로 이동';
       $('#resultLayer').classList.add('show');
       advanceInspectionGuide('open');
@@ -311,17 +325,37 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       $('#buyBoxButton').disabled=$('#buyAnotherButton').disabled=purchaseLocked;
       $('#buyBoxButton').textContent=$('#buyAnotherButton').textContent=state.boxes.length>=MAX_BOXES?'보관 한도 15개':'상자 1개 구매';
       $('#goInspectionButton').disabled=state.boxes.length===0;
-      const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]}</span></div>`).join(''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
+      const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]} <span class="storage-stars">${'★'.repeat(boxStars(b))}${'☆'.repeat(5-boxStars(b))}</span></span></div>`).join(''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
       if(rebuild)buildStorageStack();
     }
-    function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
+    function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#menuCollection').textContent=`${discoveredCount()} / 60`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
 
-    const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame');
-    function showScreen(screen){[mainMenu,inspectionGame,storageGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
+    const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame'),collectionGame=$('#collectionGame');
+    function showScreen(screen){[mainMenu,inspectionGame,storageGame,collectionGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
     function updateMainFirstRun(){mainMenu.classList.toggle('first-run',!state.tutorialDone)}
     function goMain(){showScreen(mainMenu);updateMainFirstRun();updateGlobalUI()}
     function goInspection(){showScreen(inspectionGame);beginCurrentBox();resizeInspection()}
     function goStorage(){showScreen(storageGame);updateStorageUI();resizeStorage()}
+    let collectionCategory='mimic';
+    function goCollection(){showScreen(collectionGame);renderCollection()}
+    function renderCollection(){
+      const total=60,found=discoveredCount();
+      $('#collectionProgressText').textContent=`발견 ${found} / ${total}`;
+      $('#collectionCount').textContent=`${found} / ${total}`;
+      $('#collectionProgress').style.width=`${found/total*100}%`;
+      $('#collectionTabs').innerHTML=CATEGORY_ORDER.map(key=>{const category=itemCatalog[key],count=category.items.filter((_,index)=>(state.collection[collectionKey(key,index)]||0)>0).length;return `<button class="collection-tab ${key===collectionCategory?'active':''}" data-category="${key}"><span>${category.label}</span><small>${count} / ${category.items.length}</small></button>`}).join('');
+      $$('#collectionTabs .collection-tab').forEach(button=>button.onclick=()=>{collectionCategory=button.dataset.category;renderCollection()});
+      const category=itemCatalog[collectionCategory];
+      const categoryFound=category.items.filter((_,index)=>(state.collection[collectionKey(collectionCategory,index)]||0)>0).length;
+      $('#collectionCategoryLabel').textContent=CATEGORY_CODE[collectionCategory];
+      $('#collectionCategoryTitle').textContent=`${category.label} 도감`;
+      $('#collectionCategoryCount').textContent=`${categoryFound} / ${category.items.length} 발견`;
+      $('#collectionGrid').innerHTML=category.items.map((item,index)=>{
+        const highest=Number(state.collection[collectionKey(collectionCategory,index)])||0;
+        if(!highest)return `<article class="collection-card locked" data-number="${String(index+1).padStart(2,'0')}"><div class="collection-card-head"><span class="collection-card-category">UNIDENTIFIED</span><span>${starsHTML(0)}</span></div><h3>미발견 물품</h3><p>상자를 개봉하면 이름과 기록이 공개됩니다.</p><span class="collection-risk">기록 없음</span></article>`;
+        return `<article class="collection-card" data-number="${String(index+1).padStart(2,'0')}"><div class="collection-card-head"><span class="collection-card-category">${CATEGORY_CODE[collectionCategory]}</span>${starsHTML(highest)}</div><h3>${item.name}</h3><p>${item.description}</p><span class="collection-risk">위험도 · ${riskLabel[item.risk]} / 최고 ${highest}성</span></article>`;
+      }).join('');
+    }
 
     const workerSignature=$('#workerSignature'),signaturePadWrap=$('#signaturePadWrap');
     const signatureContext=workerSignature.getContext('2d');
@@ -350,10 +384,10 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       signatureLength+=Math.hypot(dx,dy);signatureContext.lineTo(point.x,point.y);signatureContext.stroke();signatureLast=point;event.preventDefault();
     });
     workerSignature.addEventListener('pointerup',finishSignature);workerSignature.addEventListener('pointercancel',finishSignature);workerSignature.addEventListener('pointerleave',event=>{if(signatureDrawing&&event.buttons===0)finishSignature()});
-    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
+    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#modeCollectionButton').onclick=goCollection;$('#inspectionCollection').onclick=goCollection;$('#storageCollection').onclick=goCollection;$('#collectionHome').onclick=goMain;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
-    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false};saveState();updateStorageUI();goMain()}};
+    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false,collection:{}};saveState();updateStorageUI();goMain()}};
     $('#ruleButton').onclick=()=>$('#ruleOverlay').classList.remove('hidden');$('#ruleClose').onclick=()=>$('#ruleOverlay').classList.add('hidden');
     $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox();else goStorage()};
     $$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));
