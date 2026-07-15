@@ -111,9 +111,9 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     function loadState(){
       try{
         const raw=JSON.parse(localStorage.getItem(STORE_KEY));
-        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes))return{...raw,tutorialDone:Boolean(raw.tutorialDone),collection:raw.collection&&typeof raw.collection==='object'?raw.collection:{}};
+        if(raw&&Number.isFinite(raw.money)&&Array.isArray(raw.boxes))return{...raw,tutorialDone:Boolean(raw.tutorialDone)};
       }catch(error){console.warn(error)}
-      return{money:1000,boxes:[],tutorialDone:false,collection:{}};
+      return{money:1000,boxes:[],tutorialDone:false};
     }
     function saveState(){localStorage.setItem(STORE_KEY,JSON.stringify(state));updateGlobalUI()}
     const money=v=>`${Math.round(v).toLocaleString('ko-KR')} G`;
@@ -121,17 +121,6 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     const rint=(a,b)=>Math.floor(rand(a,b+1));
     const pick=a=>a[Math.floor(Math.random()*a.length)];
     function weighted(entries){let total=entries.reduce((s,e)=>s+e.weight,0),roll=Math.random()*total;for(const e of entries){roll-=e.weight;if(roll<=0)return e.value}return entries.at(-1).value}
-
-    const categoryOrder=['mimic','treasure','explosive','junk'];
-    const categoryEnglish={mimic:'CREATURE',treasure:'TREASURE',explosive:'EXPLOSIVE',junk:'MISCELLANEOUS'};
-    const starText=grade=>'★'.repeat(grade+1)+'☆'.repeat(4-grade);
-    const collectionKey=(content,itemIndex)=>`${content}:${itemIndex}`;
-    function discoveredCount(){return Object.keys(state.collection||{}).length}
-    function registerDiscovery(content,itemIndex,grade){
-      if(!state.collection||typeof state.collection!=='object')state.collection={};
-      const key=collectionKey(content,itemIndex),previous=state.collection[key];
-      if(previous===undefined||grade>previous)state.collection[key]=grade;
-    }
 
     function createBoxData(){
       const content=pick(Object.keys(itemCatalog));
@@ -197,9 +186,41 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     }
     function inspect(tool){if(!current||resolved||used>=4)return;used++;results.push({id:tool.id,name:tool.name,text:truthful(tool.id)});insMode=tool.id==='weight'?'lift':'inspect';insTime=0;updateInspectionUI();advanceInspectionGuide('tool',tool.id)}
 
-    function beginCurrentBox(){
-      current=state.boxes.length?state.boxes[0]:null;if(current&&!itemCatalog[current.content])current.content='mimic';used=0;results=[];resolved=false;$('#contentGuess').value='unknown';$('#riskGuess').value='unknown';$('#resultLayer').classList.remove('show');
-      if(current){buildChest(inspectionModel,current.grade);inspectionRoot.visible=true;$('#inspectionEmpty').classList.add('hidden')}else{clear(inspectionModel);inspectionRoot.visible=false;$('#inspectionEmpty').classList.remove('hidden')}
+    function beginCurrentBox(forceReset=false){
+      const nextBox=state.boxes.length?state.boxes[0]:null;
+      const isSameUnresolvedBox=Boolean(
+        !forceReset&&
+        current&&
+        nextBox&&
+        current.id===nextBox.id&&
+        !resolved
+      );
+
+      // 도감이나 다른 화면을 잠깐 열었다 돌아온 경우에는
+      // 현재 상자의 조사 횟수, 조사 기록, 선택값을 그대로 유지합니다.
+      if(isSameUnresolvedBox){
+        updateInspectionUI();
+        return;
+      }
+
+      current=nextBox;
+      if(current&&typeof itemCatalog!=='undefined'&&!itemCatalog[current.content])current.content='mimic';
+      used=0;
+      results=[];
+      resolved=false;
+      $('#contentGuess').value='unknown';
+      $('#riskGuess').value='unknown';
+      $('#resultLayer').classList.remove('show');
+
+      if(current){
+        buildChest(inspectionModel,current.grade);
+        inspectionRoot.visible=true;
+        $('#inspectionEmpty').classList.add('hidden');
+      }else{
+        clear(inspectionModel);
+        inspectionRoot.visible=false;
+        $('#inspectionEmpty').classList.remove('hidden');
+      }
       updateInspectionUI();
     }
     function updateInspectionUI(){
@@ -222,7 +243,6 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       const reward=categoryReward+riskReward;
 
       state.money+=reward;
-      registerDiscovery(current.content,current.itemIndex,current.grade);
       state.boxes.shift();
       saveState();
 
@@ -326,39 +346,14 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       const list=$('#storageList');list.innerHTML=state.boxes.length?state.boxes.map((b,i)=>`<div class="storage-row"><span>${i+1}. 미감정 상자</span><span>${chestNames[b.grade]}</span></div>`).join(''):'<div class="storage-empty">보유한 상자가 없습니다.</div>';
       if(rebuild)buildStorageStack();
     }
-    function updateGlobalUI(){const total=categoryOrder.reduce((sum,key)=>sum+itemCatalog[key].items.length,0);$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#menuCollection').textContent=`${discoveredCount()} / ${total}`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
+    function updateGlobalUI(){$('#menuMoney').textContent=money(state.money);$('#menuBoxes').textContent=`${state.boxes.length}개`;$('#inspectionMoney').textContent=money(state.money);$('#inspectionBoxCount').textContent=`${state.boxes.length} / ${MAX_BOXES}`;$('#storageMoney').textContent=money(state.money)}
 
-    const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame'),collectionGame=$('#collectionGame');
-    let collectionCategory='mimic',collectionReturnScreen='main';
-    function showScreen(screen){[mainMenu,inspectionGame,storageGame,collectionGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
+    const mainMenu=$('#mainMenu'),inspectionGame=$('#inspectionGame'),storageGame=$('#storageGame');
+    function showScreen(screen){[mainMenu,inspectionGame,storageGame].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');updateGlobalUI()}
     function updateMainFirstRun(){mainMenu.classList.toggle('first-run',!state.tutorialDone)}
     function goMain(){showScreen(mainMenu);updateMainFirstRun();updateGlobalUI()}
     function goInspection(){showScreen(inspectionGame);beginCurrentBox();resizeInspection()}
     function goStorage(){showScreen(storageGame);updateStorageUI();resizeStorage()}
-    function renderCollection(){
-      const total=categoryOrder.reduce((sum,key)=>sum+itemCatalog[key].items.length,0),found=discoveredCount();
-      $('#collectionProgressText').textContent=`도감 지급 완료 · 발견 ${found} / ${total}`;
-      $('#collectionProgress').style.width=`${found/total*100}%`;
-      $('#collectionCount').textContent=`${found} / ${total}`;
-      $('#collectionTabs').innerHTML=categoryOrder.map(key=>{const category=itemCatalog[key],count=category.items.filter((_,i)=>state.collection[collectionKey(key,i)]!==undefined).length;return `<button class="collection-tab ${key===collectionCategory?'active':''}" data-category="${key}" type="button"><span>${category.label}</span><small>${count} / ${category.items.length}</small></button>`}).join('');
-      const category=itemCatalog[collectionCategory];
-      $('#collectionCategoryLabel').textContent=categoryEnglish[collectionCategory];
-      $('#collectionCategoryTitle').textContent=`${category.label} 도감`;
-      const categoryFound=category.items.filter((_,i)=>state.collection[collectionKey(collectionCategory,i)]!==undefined).length;
-      $('#collectionCategoryCount').textContent=`${categoryFound} / ${category.items.length} 발견`;
-      $('#collectionGrid').innerHTML=category.items.map((item,index)=>{const grade=state.collection[collectionKey(collectionCategory,index)],found=grade!==undefined;return `<article class="collection-item ${found?'discovered':'reference'}"><div class="collection-item-top"><span class="collection-number">${String(index+1).padStart(2,'0')}</span><span class="collection-stars">${found?starText(grade):'참고 자료'}</span></div><h3>${item.name}</h3><p>${item.description}</p><div class="collection-item-bottom"><span>${riskLabel[item.risk]}</span><strong>${found?'발견 완료':'미발견'}</strong></div></article>`}).join('');
-      $$('#collectionTabs .collection-tab').forEach(button=>button.onclick=()=>{collectionCategory=button.dataset.category;renderCollection()});
-    }
-    function goCollection(returnScreen='main'){
-      collectionReturnScreen=returnScreen;
-      showScreen(collectionGame);
-      renderCollection();
-    }
-    function leaveCollection(){
-      if(collectionReturnScreen==='inspection')goInspection();
-      else if(collectionReturnScreen==='storage')goStorage();
-      else goMain();
-    }
 
     const workerSignature=$('#workerSignature'),signaturePadWrap=$('#signaturePadWrap');
     const signatureContext=workerSignature.getContext('2d');
@@ -387,12 +382,12 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       signatureLength+=Math.hypot(dx,dy);signatureContext.lineTo(point.x,point.y);signatureContext.stroke();signatureLast=point;event.preventDefault();
     });
     workerSignature.addEventListener('pointerup',finishSignature);workerSignature.addEventListener('pointercancel',finishSignature);workerSignature.addEventListener('pointerleave',event=>{if(signatureDrawing&&event.buttons===0)finishSignature()});
-    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#modeCollectionButton').onclick=()=>goCollection('main');$('#inspectionCollection').onclick=()=>{if(onboardingActive&&guideMode==='inspection')advanceInspectionGuide('collection');goCollection('inspection')};$('#storageCollection').onclick=()=>goCollection('storage');$('#collectionHome').onclick=()=>{const tutorialReturn=onboardingActive&&guideMode==='inspection';leaveCollection();if(tutorialReturn)advanceInspectionGuide('collectionBack')};$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
+    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
-    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false,collection:{}};saveState();updateStorageUI();goMain()}};
+    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false};saveState();updateStorageUI();goMain()}};
     $('#ruleButton').onclick=()=>$('#ruleOverlay').classList.remove('hidden');$('#ruleClose').onclick=()=>$('#ruleOverlay').classList.add('hidden');
-    $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox();else goStorage()};
+    $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox(true);else goStorage()};
     $$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));
     $('#contentGuess').addEventListener('change',()=>{if($('#contentGuess').value!=='unknown'&&$('#riskGuess').value!=='unknown')advanceInspectionGuide('guess')});$('#riskGuess').addEventListener('change',()=>{if($('#contentGuess').value!=='unknown'&&$('#riskGuess').value!=='unknown')advanceInspectionGuide('guess')});
 
@@ -400,15 +395,13 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
     let guideMode='',guideIndex=0;
     const inspectionGuideSteps=[
       {target:'[data-tool="weight"]',title:'첫 번째 단서를 직접 조사하세요',text:'무게 측정은 내용물의 움직임과 무게 중심을 알려줍니다.',task:'강조된 무게 측정 버튼을 눌러주세요.',action:'tool',value:'weight'},
-      {target:'#guideCluesTarget',title:'조사 기록을 확인하세요',text:'방금 얻은 단서가 조사 기록에 추가됐습니다. 결과는 정확하지만 표현은 간접적입니다.',task:'기록을 읽은 뒤 아래 확인 버튼을 눌러주세요.',action:'next'},
-      {target:'[data-tool="surface"]',title:'위험도 단서를 하나 더 찾으세요',text:'표면 흔적은 긁힘과 충격 흔적으로 위험도를 알려줍니다.',task:'강조된 표면 흔적 버튼을 눌러주세요.',action:'tool',value:'surface'},
-      {target:'#inspectionCollection',title:'지급된 도감을 열어보세요',text:'도감에는 처음부터 모든 후보 물품의 이름, 설명, 분류와 위험도가 적혀 있습니다. 조사 단서와 비교해 후보를 좁힐 수 있습니다.',task:'상단의 도감 버튼을 눌러주세요.',action:'collection'},
-      {target:'#collectionGrid',title:'도감과 단서를 비교하세요',text:'미발견 물품도 추리용 참고 자료로 볼 수 있습니다. 개봉한 물품에는 발견 표시와 최고 별 등급이 기록됩니다.',task:'후보 목록을 살펴본 뒤 확인 버튼을 눌러주세요.',action:'next'},
-      {target:'#collectionHome',title:'감정소로 돌아가세요',text:'도감을 확인했으면 감정소로 돌아가 조사 결과와 후보를 비교해 판정합니다.',task:'왼쪽 위의 돌아가기 버튼을 눌러주세요.',action:'collectionBack'},
-      {target:'#guideGuessTarget',title:'도감을 참고해 판정하세요',text:'조사 기록과 도감의 후보를 비교해 카테고리와 위험도를 선택하세요.',task:'카테고리와 위험도를 모두 선택해주세요.',action:'guess'},
+      {target:'#guideCluesTarget',title:'조사 기록을 확인하세요',text:'방금 얻은 단서가 조사 기록에 추가됐습니다. 모든 결과는 정확하지만 표현은 간접적입니다.',task:'기록을 읽은 뒤 아래 확인 버튼을 눌러주세요.',action:'next'},
+      {target:'[data-tool="surface"]',title:'위험도 단서를 하나 더 찾으세요',text:'표면 흔적은 상자 안쪽의 긁힘과 충격 흔적으로 위험도를 알려줍니다.',task:'강조된 표면 흔적 버튼을 눌러주세요.',action:'tool',value:'surface'},
+      {target:'#guideGuessTarget',title:'판정을 직접 입력하세요',text:'카테고리와 위험도를 선택해야 개봉 결과와 비교할 수 있습니다.',task:'카테고리와 위험도를 모두 선택해주세요.',action:'guess'},
       {target:'#guideOpenTarget',title:'상자를 개봉해 답을 확인하세요',text:'개봉하면 상자 한 개가 소비되고 카테고리와 위험도 정답마다 150 G를 받습니다.',task:'강조된 상자 개봉 버튼을 눌러주세요.',action:'open'},
-      {target:'#resultLayer .result-card',title:'도감 기록도 갱신됩니다',text:'개봉한 물품은 도감에 발견 완료로 기록되고, 더 높은 별 상자에서 다시 찾으면 최고 별 기록이 갱신됩니다.',task:'정산 내역을 확인하면 첫 업무가 끝납니다.',action:'complete'}
-    ];    function renderGuideProgress(total,current){guideProgress.innerHTML=Array.from({length:total},(_,i)=>`<span class="${i<=current?'done':''}"></span>`).join('')}
+      {target:'#resultLayer .result-card',title:'정산표를 읽어보세요',text:'카테고리 정답 150 G와 위험도 정답 150 G가 각각 계산됩니다. 둘 다 맞히면 총 300 G입니다.',task:'정산 내역을 확인하면 첫 업무가 끝납니다.',action:'complete'}
+    ];
+    function renderGuideProgress(total,current){guideProgress.innerHTML=Array.from({length:total},(_,i)=>`<span class="${i<=current?'done':''}"></span>`).join('')}
     function positionGuide(targetSelector,title,text,kicker='FIRST SHIFT',task='강조된 부분을 확인하세요.'){
       const target=$(targetSelector);if(!target)return;const rect=target.getBoundingClientRect(),pad=8;
       guideFocus.style.left=`${rect.left-pad}px`;guideFocus.style.top=`${rect.top-pad}px`;guideFocus.style.width=`${rect.width+pad*2}px`;guideFocus.style.height=`${rect.height+pad*2}px`;
@@ -416,10 +409,10 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       let left=rect.right+18,top=Math.max(18,rect.top);if(left+380>innerWidth-18)left=Math.max(18,rect.left-398);if(top+300>innerHeight-18)top=Math.max(18,innerHeight-318);guideCard.style.left=`${left}px`;guideCard.style.top=`${top}px`;
     }
     function startMainGuide(){if(state.tutorialDone)return;onboardingActive=true;guideMode='main';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='서명 후 버튼을 눌러주세요';guideNext.disabled=true;renderGuideProgress(9,0);positionGuide('#workerSignature','업무 인수서에 서명하세요','쌓여 있는 서류 중 마지막 인수 확인서입니다. 빈칸에 이름을 입력한 뒤 업무 인수 버튼을 눌러주세요.','FIRST SHIFT · 1 / 9','서명란에 이름을 입력하고 아래 버튼을 눌러주세요.')}
-    function startStorageGuide(){guideMode='storage';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='구매 버튼을 직접 눌러주세요';guideNext.disabled=true;renderGuideProgress(11,1);positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 1 / 8','강조된 상자 1개 구매 버튼을 직접 눌러주세요.')}
-    function startMoveGuide(){guideMode='move';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='감정소 이동을 눌러주세요';guideNext.disabled=true;renderGuideProgress(11,2);positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 2 / 8','강조된 감정소 이동 버튼을 직접 눌러주세요.')}
+    function startStorageGuide(){guideMode='storage';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='구매 버튼을 직접 눌러주세요';guideNext.disabled=true;renderGuideProgress(8,0);positionGuide('#buyBoxButton','첫 상자를 준비하세요','적재소는 감정할 상자를 사서 보관하는 장소입니다. 상자 가격은 200 G입니다.','FIRST SHIFT · 1 / 8','강조된 상자 1개 구매 버튼을 직접 눌러주세요.')}
+    function startMoveGuide(){guideMode='move';guideIndex=0;guideOverlay.classList.remove('hidden');guideNext.textContent='감정소 이동을 눌러주세요';guideNext.disabled=true;renderGuideProgress(8,1);positionGuide('#goInspectionButton','작업장 사이를 이동하세요','상자를 준비했으니 이제 감정소로 옮겨야 합니다. 이후에도 하단 이동 버튼으로 적재소와 감정소를 오갈 수 있습니다.','FIRST SHIFT · 2 / 8','강조된 감정소 이동 버튼을 직접 눌러주세요.')}
     function startInspectionGuide(){guideMode='inspection';guideIndex=0;guideOverlay.classList.remove('hidden');updateInspectionGuide()}
-    function updateInspectionGuide(){const step=inspectionGuideSteps[guideIndex];guideNext.disabled=step.action!=='next'&&step.action!=='complete';guideNext.textContent=step.action==='next'?'확인했어요':step.action==='complete'?'튜토리얼 완료':'직접 조작해주세요';renderGuideProgress(11,guideIndex+2);positionGuide(step.target,step.title,step.text,`FIRST SHIFT · ${guideIndex+3} / 11`,step.task)}
+    function updateInspectionGuide(){const step=inspectionGuideSteps[guideIndex];guideNext.disabled=step.action!=='next'&&step.action!=='complete';guideNext.textContent=step.action==='next'?'확인했어요':step.action==='complete'?'튜토리얼 완료':'직접 조작해주세요';renderGuideProgress(8,guideIndex+2);positionGuide(step.target,step.title,step.text,`FIRST SHIFT · ${guideIndex+3} / 8`,step.task)}
     function advanceInspectionGuide(expectedAction,value=''){
       if(!onboardingActive||guideMode!=='inspection')return;
       const step=inspectionGuideSteps[guideIndex];if(!step||step.action!==expectedAction)return;if(value&&step.value!==value)return;
