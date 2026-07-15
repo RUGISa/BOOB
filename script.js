@@ -425,10 +425,19 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.m
       signatureLength+=Math.hypot(dx,dy);signatureContext.lineTo(point.x,point.y);signatureContext.stroke();signatureLast=point;event.preventDefault();
     });
     workerSignature.addEventListener('pointerup',finishSignature);workerSignature.addEventListener('pointercancel',finishSignature);workerSignature.addEventListener('pointerleave',event=>{if(signatureDrawing&&event.buttons===0)finishSignature()});
-    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#modeCollectionButton').onclick=()=>goCollection('main');$('#inspectionCollection').onclick=()=>{goCollection('inspection');if(onboardingActive&&guideMode==='inspection'){const step=inspectionGuideSteps[guideIndex];if(step&&step.action==='collection'){guideMode='collection';guideOverlay.classList.remove('hidden');setTimeout(updateCollectionGuide,180)}}};$('#storageCollection').onclick=()=>goCollection('storage');$('#collectionHome').onclick=leaveCollection;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
+    function resetAllSaveData(){
+      if(!confirm('돈, 보유 상자, 도감 기록과 튜토리얼을 처음 상태로 되돌릴까요?'))return;
+      state={money:1000,boxes:[],tutorialDone:false,collection:{}};
+      saveState();
+      updateStorageUI();
+      beginCurrentBox(true);
+      goMain();
+    }
+    $('#startLoopButton').onclick=()=>goStorage();$('#modeInspectionButton').onclick=goInspection;$('#modeStorageButton').onclick=goStorage;$('#modeCollectionButton').onclick=()=>goCollection('main');$('#menuCollectionQuick').onclick=()=>goCollection('main');$('#inspectionCollection').onclick=()=>{goCollection('inspection');if(onboardingActive&&guideMode==='inspection'){const step=inspectionGuideSteps[guideIndex];if(step&&step.action==='collection'){guideMode='collection';guideOverlay.classList.remove('hidden');setTimeout(updateCollectionGuide,180)}}};$('#storageCollection').onclick=()=>goCollection('storage');$('#collectionHome').onclick=leaveCollection;$('#inspectionHome').onclick=goMain;$('#storageHome').onclick=goMain;$('#goStorageButton').onclick=goStorage;$('#emptyGoStorage').onclick=goStorage;$('#goInspectionButton').onclick=()=>{goInspection();if(onboardingActive&&guideMode==='move')setTimeout(startInspectionGuide,180)};
     $('#buyBoxButton').onclick=buyBox;$('#buyAnotherButton').onclick=buyBox;
     $('#clearBoxesButton').onclick=()=>{if(confirm('보유 상자를 모두 비울까요?')){state.boxes=[];saveState();updateStorageUI()}};
-    $('#resetSaveButton').onclick=()=>{if(confirm('돈과 보유 상자를 처음 상태로 되돌릴까요?')){state={money:1000,boxes:[],tutorialDone:false,collection:{}};saveState();updateStorageUI();goMain()}};
+    $('#resetSaveButton').onclick=resetAllSaveData;
+    $('#resetSaveQuick').onclick=resetAllSaveData;
     $('#ruleButton').onclick=()=>$('#ruleOverlay').classList.remove('hidden');$('#ruleClose').onclick=()=>$('#ruleOverlay').classList.add('hidden');
     $('#resultNext').onclick=()=>{if(state.boxes.length)beginCurrentBox(true);else goStorage()};
     $$('#inspectionGame .action-button').forEach(b=>b.onclick=()=>resolveAction(b.dataset.action));

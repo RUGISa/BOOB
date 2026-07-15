@@ -154,3 +154,28 @@
   .main-menu .mode-button{min-height:96px;padding:16px}
   .main-menu .start-loop-button{min-height:60px}
 }
+
+
+/* 메인 메뉴 상단 고정 도감 / 초기화 버튼 */
+.menu-utility-bar{
+  position:sticky;
+  z-index:20;
+  top:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding-bottom:10px;
+  background:linear-gradient(180deg,var(--paper) 0%,var(--paper) 78%,rgba(250,249,245,0) 100%);
+}
+.menu-utility-button{
+  min-height:40px;
+  border:1px solid var(--line-dark);
+  color:var(--text);
+  background:#fff;
+  font-size:10px;
+  font-weight:900;
+}
+.menu-utility-button:hover{color:#fff;background:#292927}
+.menu-utility-button.danger{color:#8d443d}
+.menu-utility-button.danger:hover{color:#fff;background:#8d443d;border-color:#8d443d}
+.main-menu.first-run .menu-utility-bar{display:none}
