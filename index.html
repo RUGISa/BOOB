@@ -8,6 +8,10 @@
 </head>
 <body>
   <section id="mainMenu" class="screen main-menu">
+    <div class="main-quick-actions" aria-label="빠른 메뉴">
+      <button id="menuCollectionQuick" type="button">도감</button>
+      <button id="resetSaveQuick" type="button">초기화</button>
+    </div>
     <div id="intakeDesk" class="intake-desk">
       <div class="paper-field" aria-hidden="true">
         <i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i><i class="loose-paper"></i>
@@ -19,7 +23,7 @@
         <div class="doc-top"><span class="doc-office">BOX APPRAISAL OFFICE</span><span class="doc-number">FORM A-01 · 신규 작업자 등록</span></div>
         <h1 class="doc-title">업무 인수 확인서</h1>
         <p class="doc-subtitle">WAREHOUSE &amp; APPRAISAL CONNECTED WORK ORDER</p>
-        <p class="doc-copy">본인은 적재소에서 미감정 상자를 구매하고, 감정소에서 조사 결과를 바탕으로 내용물의 카테고리와 위험도를 판정한 뒤 개봉하는 업무를 인수합니다.</p>
+        <p class="doc-copy">본인은 적재소에서 미감정 상자를 구매하고, 감정소에서 조사 결과를 바탕으로 내용물의 카테고리와 안전성를 판정한 뒤 개봉하는 업무를 인수합니다.</p>
         <div class="doc-clauses">
           <div class="doc-clause"><strong>01</strong><span>상자는 적재소에서 한 개씩 구매하며 최대 15개까지 보관합니다.</span></div>
           <div class="doc-clause"><strong>02</strong><span>보유 상자는 감정소에서 개봉할 때마다 한 개씩 차감됩니다.</span></div>
@@ -49,21 +53,17 @@
         <p class="menu-footer">CONNECTED WORKSPACES</p>
       </div>
       <div class="menu-options">
-        <div class="menu-utility-bar">
-          <button id="menuCollectionQuick" class="menu-utility-button" type="button">도감</button>
-          <button id="resetSaveQuick" class="menu-utility-button danger" type="button">초기화</button>
-        </div>
         <p class="menu-options-label">CURRENT STATUS</p>
         <div class="menu-stats">
           <div class="menu-stat"><span>MONEY</span><strong id="menuMoney">1,000 G</strong></div>
           <div class="menu-stat"><span>OWNED BOXES</span><strong id="menuBoxes">0개</strong></div>
-          <div class="menu-stat menu-stat-wide"><span>COLLECTION</span><strong id="menuCollection">0 / 60</strong></div>
+          <div class="menu-stat"><span>COLLECTION</span><strong id="menuCollection">0 / 60</strong></div><div class="menu-stat"><span id="menuDay">DAY 1</span><strong id="menuStreak">BEST 0</strong></div>
         </div>
         <button id="startLoopButton" class="start-loop-button" type="button"><span>임무 시작</span><span>→</span></button>
         <p class="location-caption">DIRECT ACCESS</p>
         <button id="modeInspectionButton" class="mode-button" type="button">
           <span class="mode-number">1</span>
-          <span><span class="mode-title">상자 감정소</span><span class="mode-description">보유한 상자를 한 개 꺼내 네 번 조사하고 카테고리와 위험도를 맞힌 뒤 개봉합니다.</span></span>
+          <span><span class="mode-title">상자 감정소</span><span class="mode-description">보유한 상자를 한 개 꺼내 네 번 조사하고 카테고리와 안전성를 맞힌 뒤 개봉합니다.</span></span>
           <span class="mode-arrow">→</span>
         </button>
         <button id="modeStorageButton" class="mode-button" type="button">
@@ -84,7 +84,7 @@
   <main id="inspectionGame" class="screen game-screen hidden">
     <header class="topbar">
       <div class="brand"><div class="brand-mark">鑑</div><div><h1 class="brand-title">상자 감정소</h1><p class="brand-sub">적재소에서 가져온 상자를 감정합니다.</p></div></div>
-      <div class="progress-box"><div class="progress-head"><span id="inspectionInventoryText">보유 상자 0개</span><span>상자당 조사 4회</span></div><div class="progress-track"><div id="inventoryProgress" class="progress-fill"></div></div></div>
+      <div class="progress-box"><div class="progress-head"><span id="inspectionInventoryText">보유 상자 0개</span><span><b id="dayStatusText">DAY 1 · 0/8</b> · <b id="streakText">연속 0</b></span></div><div class="progress-track"><div id="inventoryProgress" class="progress-fill"></div></div></div>
       <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="inspectionMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="inspectionBoxCount" class="stat-value">0 / 15</div></div><button id="inspectionCollection" class="small-button" type="button">도감</button><button id="ruleButton" class="small-button" type="button">규정</button><button id="inspectionHome" class="home-button" type="button">←</button></div>
     </header>
 
@@ -98,17 +98,17 @@
         <canvas id="inspectionCanvas"></canvas>
         <div class="case-label"><p id="caseNumber">STORED BOX</p><h2 id="caseName">상자 없음</h2><small id="caseSub">적재소에서 상자를 구매하세요</small></div>
         <div id="inspectionEmpty" class="empty-state hidden"><div class="empty-card"><h2>감정할 상자가 없습니다</h2><p>적재소에서 상자를 구매하면 이곳에서 바로 조사할 수 있습니다.</p><button id="emptyGoStorage" type="button">적재소로 이동</button></div></div>
-        <div id="resultLayer" class="result-layer"><article class="result-card"><p id="resultKicker" class="result-kicker">ANSWER CHECK</p><h2 id="resultTitle" class="result-title">정답 공개</h2><p id="resultDescription" class="result-description"></p><div id="resultMoney" class="result-money"></div><div id="resultDetails" class="result-details"></div><button id="resultNext" class="result-button" type="button">다음 상자</button></article></div>
+        <div id="openingLayer" class="opening-layer"><div class="opening-chest"><span></span><p>개봉 중</p></div></div><div id="resultLayer" class="result-layer"><article class="result-card"><p id="resultKicker" class="result-kicker">ANSWER CHECK</p><h2 id="resultTitle" class="result-title">정답 공개</h2><p id="resultDescription" class="result-description"></p><div id="resultMoney" class="result-money"></div><div id="resultDetails" class="result-details"></div><button id="resultNext" class="result-button" type="button">다음 상자</button></article></div>
       </section>
 
       <aside class="side-panel right">
         <section id="guideCluesTarget" class="panel-section"><p class="section-label">FINDINGS</p><h2 class="section-title">조사 기록</h2><div id="clueList" class="clue-list"><div class="clue-empty">아직 기록된 조사 결과가 없습니다.</div></div></section>
-        <section id="guideGuessTarget" class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">조사 결과를 바탕으로 카테고리와 위험도를 선택한 뒤 상자를 개봉하세요.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option><option value="treasure">귀중품</option><option value="explosive">폭발물</option><option value="junk">잡동사니</option></select></label><label><span class="field-label">예상 위험도</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
+        <section id="guideGuessTarget" class="panel-section"><p class="section-label">HYPOTHESIS</p><h2 class="section-title">최종 추리</h2><p class="section-description">조사 결과를 바탕으로 카테고리와 안전성를 선택한 뒤 상자를 개봉하세요.</p><div class="guess-grid"><label><span class="field-label">예상 카테고리</span><select id="contentGuess" class="select-box"><option value="unknown">판단 보류</option><option value="mimic">생물</option><option value="treasure">귀중품</option><option value="explosive">폭발물</option><option value="junk">잡동사니</option></select></label><label><span class="field-label">예상 안전성</span><select id="riskGuess" class="select-box"><option value="unknown">판단 보류</option><option value="safe">안전</option><option value="warning">주의</option><option value="danger">위험</option></select></label></div></section>
       </aside>
     </section>
 
     <footer class="bottom-panel">
-      <p class="bottom-note"><strong>카테고리 정답</strong> +150 G · <strong>위험도 정답</strong> +150 G<br>둘 다 맞히면 총 300 G를 받습니다.</p>
+      <p id="currentRewardText" class="bottom-note"><strong>1성 상자</strong> · 카테고리 정답 +150 G · 안전성 정답 +150 G<br>둘 다 맞히면 총 300 G를 받습니다.</p>
       <div id="guideOpenTarget" class="action-grid"><button class="action-button" data-action="open"><span class="action-title">상자 개봉</span><span class="action-info">추리 결과 확인</span></button></div>
       <button id="goStorageButton" class="go-storage-button" type="button">적재소로 이동</button>
     </footer>
@@ -117,7 +117,7 @@
   <main id="storageGame" class="screen game-screen hidden">
     <header class="topbar">
       <div class="brand"><div class="brand-mark">積</div><div><h1 class="brand-title">상자 적재소</h1><p class="brand-sub">상자를 구매해 감정소에 공급합니다.</p></div></div>
-      <div class="progress-box"><div class="progress-head"><span id="storageProgressText">보유 상자 0개</span><span>구매 비용 200 G</span></div><div class="progress-track"><div id="storageProgress" class="progress-fill"></div></div></div>
+      <div class="progress-box"><div class="progress-head"><span id="storageProgressText">보유 상자 0개</span><span>입고 방식별 가격</span></div><div class="progress-track"><div id="storageProgress" class="progress-fill"></div></div></div>
       <div class="top-actions"><div class="stat-box"><div class="stat-label">MONEY</div><div id="storageMoney" class="stat-value">0 G</div></div><div class="stat-box"><div class="stat-label">BOXES</div><div id="storageCount" class="stat-value">0</div></div><button id="storageCollection" class="small-button" type="button">도감</button><button id="storageHome" class="home-button" type="button">←</button></div>
     </header>
 
@@ -127,7 +127,7 @@
         <div class="storage-label"><p>CONNECTED STORAGE</p><h2 id="storageLabelTitle">빈 적재대</h2><small id="storageLabelSub">상자를 구매하면 아래에서부터 차곡차곡 쌓입니다.</small></div>
       </section>
       <aside class="storage-sidebar">
-        <section class="storage-card"><p class="section-label">PURCHASE</p><h3>미감정 상자</h3><p>내용물과 위험도는 구매 시 결정되지만 감정 전에는 확인할 수 없습니다. 상자 등급은 무작위입니다.</p><div class="price-line"><span>PRICE</span><strong>200 G</strong></div><button id="buyBoxButton" class="buy-button" type="button">상자 1개 구매</button></section>
+        <section class="storage-card"><p class="section-label">PURCHASE</p><h3>미감정 상자</h3><p>입고 방식에 따라 가격과 별 등급 확률이 달라집니다.</p><label class="purchase-label">입고 방식<select id="purchaseType" class="select-box"><option value="standard">일반 입고</option><option value="safe">안전 입고</option><option value="premium">고급 입고</option><option value="seized">압류품 입고</option><option value="auction">미확인 경매</option></select></label><p id="purchaseNote" class="purchase-note"></p><div class="price-line"><span>PRICE</span><strong id="purchasePrice">200 G</strong></div><button id="buyBoxButton" class="buy-button" type="button">상자 1개 구매</button></section>
         <section class="storage-card"><p class="section-label">INVENTORY</p><h3>보유 상자</h3><p>아래 목록의 첫 번째 상자부터 감정소로 전달됩니다.</p><div id="storageList" class="storage-list"></div></section>
       </aside>
     </section>
@@ -142,15 +142,15 @@
 
   <main id="collectionGame" class="screen collection-screen hidden">
     <header class="topbar collection-topbar">
-      <div class="brand"><div class="brand-mark">録</div><div><h1 class="brand-title">상자 도감</h1><p class="brand-sub">개봉한 물품과 최고 별 등급을 기록합니다.</p></div></div>
+      <div class="brand"><div class="brand-mark">録</div><div><h1 class="brand-title">상자 도감</h1><p class="brand-sub">모든 후보 물품을 분류별로 확인합니다.</p></div></div>
       <div class="progress-box"><div class="progress-head"><span id="collectionProgressText">발견 0 / 60</span><span>별 등급 1–5</span></div><div class="progress-track"><div id="collectionProgress" class="progress-fill"></div></div></div>
-      <div class="top-actions"><div class="stat-box"><div class="stat-label">DISCOVERED</div><div id="collectionCount" class="stat-value">0 / 60</div></div><button id="collectionHome" class="home-button" type="button">←</button></div>
+      <div class="top-actions"><div class="stat-box"><div class="stat-label">DISCOVERED</div><div id="collectionCount" class="stat-value">0 / 60</div></div><button id="soundToggle" class="small-button" type="button">효과음 ON</button><button id="collectionHome" class="home-button" type="button">←</button></div>
     </header>
     <section class="collection-body">
       <aside class="collection-sidebar">
         <p class="section-label">CATALOG</p>
         <h2 class="section-title">분류</h2>
-        <p class="section-description">도감은 업무 시작과 함께 지급되며 모든 후보 물품을 확인할 수 있습니다. 발견한 물품에는 최고 별 등급이 기록됩니다.</p>
+        <p class="section-description">도감은 업무 시작과 함께 지급됩니다. 조사 결과와 후보 설명을 비교해 카테고리와 안전성을 추리하세요.</p>
         <div id="collectionTabs" class="collection-tabs"></div>
         <div class="collection-legend"><span>★☆☆☆☆</span><small>나무 상자</small><span>★★☆☆☆</span><small>은 상자</small><span>★★★☆☆</span><small>금 상자</small><span>★★★★☆</span><small>다이아 상자</small><span>★★★★★</span><small>봉인된 상자</small></div>
       </aside>
@@ -164,8 +164,9 @@
   <div id="guideOverlay" class="guide-overlay hidden"><div id="guideFocus" class="guide-focus"></div><article id="guideCard" class="guide-card"><p id="guideKicker" class="guide-kicker">FIRST SHIFT</p><h2 id="guideTitle" class="guide-title">상자를 먼저 구매하세요</h2><p id="guideText" class="guide-text"></p><div id="guideTask" class="guide-task">강조된 버튼을 직접 눌러주세요.</div><div id="guideProgress" class="guide-progress"></div><div class="guide-actions"><button id="guideSkip" class="guide-skip" type="button">건너뛰기</button><button id="guideNext" class="guide-next" type="button">다음</button></div></article></div>
 
   <div id="ruleOverlay" class="rulebook-overlay hidden">
-    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 조사한 뒤 정답을 맞히는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 상자 1개 구매: <strong>-200 G</strong><br>2. 감정소에서 최대 4회 조사<br>3. 카테고리와 위험도 선택<br>4. 개봉하면 정답 항목에 따라 보상을 받습니다.</div><div class="rule-note">카테고리 정답: <strong>+150 G</strong><br>위험도 정답: <strong>+150 G</strong><br>둘 다 정답: <strong>총 300 G</strong></div><div class="rule-note">둘 다 오답: 0 G<br>하나 정답: 150 G<br>둘 다 정답: 300 G</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
+    <div class="rulebook-stack"><div class="rule-sheet-back a"></div><div class="rule-sheet-back b"></div><article class="rule-sheet"><header class="rule-head"><div><p class="rule-kicker">FIELD MANUAL</p><h2 class="rule-title">상자 감정 규정서</h2><p class="rule-sub">적재소에서 상자를 사고, 감정소에서 조사한 뒤 정답을 맞히는 순환 업무입니다.</p></div><div class="rule-stamp">확인필</div></header><div class="rule-grid"><section class="rule-block"><h3>조사 도구</h3><div class="rule-list"><div class="rule-item"><span>무게 측정</span><span>내용물의 움직임과 무게 중심</span></div><div class="rule-item"><span>표면 온도</span><span>카테고리 성질</span></div><div class="rule-item"><span>투과 검사</span><span>내용물 형태 힌트</span></div><div class="rule-item"><span>표면 흔적</span><span>위험도 힌트</span></div><div class="rule-item"><span>반응 시약</span><span>내용물 성질 힌트</span></div><div class="rule-item"><span>봉인 검사</span><span>위험도 힌트</span></div></div><div class="rule-note">모든 검사는 정확하지만 표현은 간접적입니다. 한 상자당 4회만 조사할 수 있습니다.</div></section><section class="rule-block"><h3>순환 구조</h3><div class="rule-note">1. 적재소에서 상자 1개 구매: <strong>-200 G</strong><br>2. 감정소에서 최대 4회 조사<br>3. 카테고리와 안전성 선택<br>4. 개봉하면 정답 항목에 따라 보상을 받습니다.</div><div class="rule-note"><strong>별 등급별 최대 보상</strong><br>1성: 300 G<br>2성: 450 G<br>3성: 650 G<br>4성: 900 G<br>5성: 1,200 G</div><div class="rule-note">카테고리와 안전성 보상은 최대 보상의 절반씩 계산됩니다.<br>둘 다 오답: 0 G<br>하나만 정답: 해당 항목 보상<br>둘 다 정답: 등급별 최대 보상</div></section></div><div class="rule-actions"><button id="ruleClose" type="button">확인</button></div></article></div>
   </div>
+  <div id="dayReport" class="day-report hidden"><article class="day-report-card"><p class="result-kicker">DAILY REPORT</p><h2 id="dayReportTitle">DAY 1 · 평가 A</h2><div id="dayReportDetails" class="day-report-details"></div><button id="dayNextButton" type="button">다음 날 시작</button></article></div>
   <script type="module" src="script.js"></script>
 </body>
 </html>
