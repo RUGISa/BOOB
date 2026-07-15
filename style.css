@@ -109,3 +109,48 @@
 .collection-card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:10px;border-top:1px solid #e4e1da}.collection-card-foot span{font-size:11px;letter-spacing:.08em}.collection-card-foot strong{color:var(--faint);font-size:9px}
 @media(max-width:980px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:780px){.collection-screen{display:block}.collection-body{display:block}.collection-sidebar{border-right:0;border-bottom:1px solid var(--line)}.collection-grid{grid-template-columns:1fr}}
+
+/* 메인 메뉴 초기화 버튼: 낮은 화면에서도 항상 접근 가능 */
+.main-menu .menu-shell{
+  max-height:calc(100vh - 56px);
+  min-height:0;
+}
+.main-menu .menu-options{
+  min-height:0;
+  max-height:calc(100vh - 58px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  justify-content:flex-start;
+  padding-bottom:18px;
+}
+.main-menu .reset-save{
+  position:sticky;
+  z-index:8;
+  bottom:0;
+  width:100%;
+  min-height:42px;
+  margin-top:10px;
+  padding:0 12px;
+  align-self:stretch;
+  border:1px solid var(--line);
+  color:#6f6b64;
+  background:rgba(250,249,245,.97);
+  box-shadow:0 -12px 20px rgba(250,249,245,.96);
+  text-align:center;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:850;
+}
+.main-menu .reset-save:hover{
+  color:#fff;
+  border-color:#292927;
+  background:#292927;
+}
+@media(max-height:820px){
+  .main-menu{padding:18px}
+  .main-menu .menu-shell{max-height:calc(100vh - 36px)}
+  .main-menu .menu-intro{min-height:0;padding:32px}
+  .main-menu .menu-options{max-height:calc(100vh - 38px);padding:26px;gap:9px}
+  .main-menu .mode-button{min-height:96px;padding:16px}
+  .main-menu .start-loop-button{min-height:60px}
+}
